@@ -1,0 +1,126 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+  background-image: url("../img/fondo_qatar.png");
+  background-size: cover;
+}
+
+.header {
+    position: absolute;
+    top: calc(50% - 260px);
+    left: calc(50% - 150px);
+    height: auto;
+    width: 300px;
+    z-index: 10;
+}
+
+img {
+    width: 300px;
+}
+
+.login {
+    position: absolute;
+    top: calc(50%);
+    left: calc(50% - 125px);
+    height: 150px;
+    width: 270px;
+    padding: 10px;
+    z-index: 2;
+}
+
+@media screen and(max-width: 320px) {
+    .header {
+        width: 50px !important;
+        margin: 0;
+    }
+}
+
+.login input[type=text] {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+.login input[type=password] {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+.icon-eye {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-eye:hover {
+    color: #99c04f;
+}
+
+.login input[type=button] {
+    width: 250px;
+    height: 35px;
+    background: #fff;
+    border: 1px solid #99c04f;
+    cursor: pointer;
+    border-radius: 100px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+.login input[type=button]:hover {
+    opacity: 0.8;
+}
+
+.login input[type=button]:active {
+    opacity: 0.6;
+}
+
+.login input[type=text]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=password]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=button]:focus {
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+::-moz-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
