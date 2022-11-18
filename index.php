@@ -29,6 +29,7 @@
         <input type="password" placeholder="Contraseña" name="password"  id="password"><br>
         <input type="button"  value="Entrar" id="entrarSistema" style="background-color: #99c04f;">
       </form>
+      <input type="button"  value="Registro" id="registro" style="background-color: #99c04f;">
     </div>
     <script src="./js/index.js"></script>
     <!-- <h3 style="position: absolute;right: 20px;bottom: 8px;color: white;">v1.5</h3> -->
