@@ -4,10 +4,17 @@
 * {
     margin: 0;
     padding: 0;
+    color: #fff;
+}
+
+h1{
+  text-align: center;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
 }
 
 body{
-  background-image: url("../img/fondo_qatar.png");
+  background-image: url("../img/fondo_registro.webp");
   background-size: cover;
 }
 
@@ -26,7 +33,7 @@ img {
 
 .login {
     position: absolute;
-    top: calc(50%);
+    top: calc(50% - 150px);
     left: calc(50% - 125px);
     height: 150px;
     width: 270px;
