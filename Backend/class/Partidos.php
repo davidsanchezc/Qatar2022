@@ -88,5 +88,5 @@
     // $data = json_decode(file_get_contents('https://api.mercadolibre.com/users/226384143/'));
     $object = new partidos();
     $res = $object->resultado_partido(3);
-    // echo $res;
+    echo gettype($res['equipo_visitante']);
 ?>
