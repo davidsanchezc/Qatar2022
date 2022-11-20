@@ -6,5 +6,5 @@
     $object = new grupos();
 
     echo json_encode($object->tabla_grupo($grupo));
-
+    
 ?>
