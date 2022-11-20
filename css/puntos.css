@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+* {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+h1{
+  text-align: center;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+}
+
+body{
+  background-image: url("../img/fondo_registro.webp");
+  background-size: cover;
+}

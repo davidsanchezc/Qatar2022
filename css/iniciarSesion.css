@@ -7,8 +7,9 @@
 }
 
 body{
-  background-image: url("../img/fondo_qatar.png");
-  background-size: cover;
+  /* background-image: url("../img/fondo_qatar.png"); */
+  background-image: url("../img/fondo_registro.webp");
+  /* background-size: cover; */
 }
 
 .header {

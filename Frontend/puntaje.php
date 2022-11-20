@@ -38,7 +38,7 @@
 <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Pubtaje Usuarios - Qatar 2022</title>
+	<title>Grupos - Qatar 2022</title>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -46,19 +46,22 @@
 	<link rel="icon" type="image/ico" href="../img/logo_qatar.ico"/>
   <!-- Estilo Personalizado -->
 	<link rel="stylesheet" type="text/css" href="../css/registro.css"/>  
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css"/>  
 	<script src="librerias/jquery-3.2.1.min.js"></script>
 	<script src="js/funciones.js"></script>
-  <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <?php 
+  require_once "menu.php"; 
+  ?>
 </head>
 <body>
   <div class="contenedor">
-    <div class="header">
-      <h1>Grupos<img style="width:50px" src="../img/logo.webp"/></h1>
-    </div>
+    <br>
+    <h1>Puntaje<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
+    <br>
+
     <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-striped table-bordered " style="text-align: center;">
-        <thead>
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
           <tr>
             <td>Posicion</td>
             <td>Nombre</td>
@@ -71,40 +74,48 @@
           </tr>
         </thead>
         <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
           <tr>
-            <td>AAAA</td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
+            <td>1</td>
+            <td><?php echo "Jug1"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><?php echo "Jug2"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <br>
-    <a href="../index.php"><input type="button" value="Volver" style="background-color: #99c04f;"></a>
     <script src="../js/index.js"></script>
-    <!-- <h3 style="position: absolute;right: 20px;bottom: 8px;color: white;">v1.5</h3> -->
-  </div>		
+  </div>
+  
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
 
-
-
-
-
-
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-    		$('#tablaArticuloDataTable').DataTable({
-				language : {
-					url: "../librerias/datatable/es.json"
-				}
-			});
-   		} );
-	</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('#tablaArticuloDataTable').DataTable({
+      language : {
+        url: "../librerias/datatable/es.json"
+      }
+    });
+    } );
+</script>

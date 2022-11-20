@@ -46,27 +46,30 @@
 	<link rel="icon" type="image/ico" href="../img/logo_qatar.ico"/>
   <!-- Estilo Personalizado -->
 	<link rel="stylesheet" type="text/css" href="../css/registro.css"/>  
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css"/>  
 	<script src="librerias/jquery-3.2.1.min.js"></script>
 	<script src="js/funciones.js"></script>
-  <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <?php 
+  require_once "menu.php"; 
+  ?>
 </head>
 <body>
   <div class="contenedor">
-    <div class="header">
-      <h1>Grupos<img style="width:50px" src="../img/logo.webp"/></h1>
-    </div>
+    <br>
+    <h1>Grupos<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
+
+    <h2>Grupo A</h2>
+
     <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-striped table-bordered " style="text-align: center;">
-        <thead>
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
           <tr>
-            <td>Posicion</td>
-            <td>Bandera</td>
+            <td>N°</td>
             <td>Pais</td>
             <td>PJ</td>
-            <td>G</td>
-            <td>E</td>
-            <td>P</td>
+            <td>PG</td>
+            <td>PE</td>
+            <td>PP</td>
             <td>GF</td>
             <td>GC</td>
             <td>DG</td>
@@ -74,43 +77,307 @@
           </tr>
         </thead>
         <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
           <tr>
-            <td>AAAA</td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
-            <td><?php echo "AAA"; ?></td>
+            <td>1</td>
+            <td><?php echo "Ecuador"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+    <h2>Grupo B</h2>
+
+    <div class="table-responsive">
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
+          <tr>
+            <td>N°</td>
+            <td>Pais</td>
+            <td>PJ</td>
+            <td>PG</td>
+            <td>PE</td>
+            <td>PP</td>
+            <td>GF</td>
+            <td>GC</td>
+            <td>DG</td>
+            <td>Pts</td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
+          <tr>
+            <td>1</td>
+            <td><?php echo "Ecuador"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Grupo C</h2>
+
+    <div class="table-responsive">
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
+          <tr>
+            <td>N°</td>
+            <td>Pais</td>
+            <td>PJ</td>
+            <td>PG</td>
+            <td>PE</td>
+            <td>PP</td>
+            <td>GF</td>
+            <td>GC</td>
+            <td>DG</td>
+            <td>Pts</td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
+          <tr>
+            <td>1</td>
+            <td><?php echo "Ecuador"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Grupo D</h2>
+
+    <div class="table-responsive">
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
+          <tr>
+            <td>N°</td>
+            <td>Pais</td>
+            <td>PJ</td>
+            <td>PG</td>
+            <td>PE</td>
+            <td>PP</td>
+            <td>GF</td>
+            <td>GC</td>
+            <td>DG</td>
+            <td>Pts</td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
+          <tr>
+            <td>1</td>
+            <td><?php echo "Ecuador"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Grupo E</h2>
+
+    <div class="table-responsive">
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
+          <tr>
+            <td>N°</td>
+            <td>Pais</td>
+            <td>PJ</td>
+            <td>PG</td>
+            <td>PE</td>
+            <td>PP</td>
+            <td>GF</td>
+            <td>GC</td>
+            <td>DG</td>
+            <td>Pts</td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
+          <tr>
+            <td>1</td>
+            <td><?php echo "Ecuador"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Grupo F</h2>
+
+    <div class="table-responsive">
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
+          <tr>
+            <td>N°</td>
+            <td>Pais</td>
+            <td>PJ</td>
+            <td>PG</td>
+            <td>PE</td>
+            <td>PP</td>
+            <td>GF</td>
+            <td>GC</td>
+            <td>DG</td>
+            <td>Pts</td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
+          <tr>
+            <td>1</td>
+            <td><?php echo "Ecuador"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Grupo G</h2>
+
+    <div class="table-responsive">
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
+          <tr>
+            <td>N°</td>
+            <td>Pais</td>
+            <td>PJ</td>
+            <td>PG</td>
+            <td>PE</td>
+            <td>PP</td>
+            <td>GF</td>
+            <td>GC</td>
+            <td>DG</td>
+            <td>Pts</td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
+          <tr>
+            <td>1</td>
+            <td><?php echo "Ecuador"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Grupo H</h2>
+
+    <div class="table-responsive">
+      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+        <thead class="table-dark">
+          <tr>
+            <td>N°</td>
+            <td>Pais</td>
+            <td>PJ</td>
+            <td>PG</td>
+            <td>PE</td>
+            <td>PP</td>
+            <td>GF</td>
+            <td>GC</td>
+            <td>DG</td>
+            <td>Pts</td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            // while($ver=mysqli_fetch_row($result)): 
+          ?>
+          <tr>
+            <td>1</td>
+            <td><?php echo "Ecuador"; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
+            <td><?php echo 0; ?></td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <br>
-    <a href="../index.php"><input type="button" value="Volver" style="background-color: #99c04f;"></a>
     <script src="../js/index.js"></script>
-    <!-- <h3 style="position: absolute;right: 20px;bottom: 8px;color: white;">v1.5</h3> -->
-  </div>		
+  </div>
+  
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
 
-
-
-
-
-
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-    		$('#tablaArticuloDataTable').DataTable({
-				language : {
-					url: "../librerias/datatable/es.json"
-				}
-			});
-   		} );
-	</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('#tablaArticuloDataTable').DataTable({
+      language : {
+        url: "../librerias/datatable/es.json"
+      }
+    });
+    } );
+</script>

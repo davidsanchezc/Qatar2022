@@ -1,0 +1,13 @@
+.btn-group label{
+  border-radius: 4px !important;
+  margin-right: 5px;
+  outline: none !important;
+}
+
+.btn-group label:active{
+  background-color: rgb(185, 185, 185) !important;
+}
+
+#navbar>ul>li>a:hover{
+  color: white !important;
+}
