@@ -45,7 +45,7 @@
                 include('db.php');
                 $query = "INSERT INTO apuestas(id_user, id_partido, goles_local, goles_visitante) VALUES ('$idUsuario', '$apuesta[0]', '$apuesta[1]', '$apuesta[2]')";
                 return mysqli_query($conn, $query);
-            }else if(($mes_actual==$mes_partido) && ($dia_actual < $datos_partido) && ($horas_actual<$horas_partido)){
+            }else if(($mes_actual==$mes_partido) && ($dia_actual == $datos_partido) && ($horas_actual<$horas_partido)){
                 $idUsuario = $_SESSION['iduser'];
                 include('db.php');
                 $query = "INSERT INTO apuestas(id_user, id_partido, goles_local, goles_visitante) VALUES ('$idUsuario', '$apuesta[0]', '$apuesta[1]', '$apuesta[2]')";
