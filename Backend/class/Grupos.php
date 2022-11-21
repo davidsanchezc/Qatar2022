@@ -78,6 +78,12 @@
                         $aux = $equipos[$j];
                         $equipos[$j] = $equipos[$j+1];
                         $equipos[$j+1] = $aux; 
+                    }else if($equipos[$j][8]==$equipos[$j+1][8]){
+                        if($equipos[$j][7]<$equipos[$j+1][7]){
+                            $aux = $equipos[$j];
+                            $equipos[$j] = $equipos[$j+1];
+                            $equipos[$j+1] = $aux; 
+                        } 
                     }
                 }
                 
