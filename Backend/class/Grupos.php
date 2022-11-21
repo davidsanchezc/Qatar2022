@@ -27,12 +27,12 @@
         }
 
         function conectar_grupo($grupo){
-            $c = new conectar();
-            $token = $c->conexion();
+            $login = new conectar();
+            $token = $login->conexion();
 
             $url = 'http://api.cup2022.ir/api/v1/standings/'.$grupo;
             $authorization = "Authorization: Bearer ".$token;
-
+            
             $ch = curl_init();
 
             curl_setopt($ch, CURLOPT_URL, $url);

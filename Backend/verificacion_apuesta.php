@@ -19,7 +19,7 @@
     $minutos = intval($horas_minutos[1]);
 
     $id_jornada = 0;
-
+    
     if($mes == 11){
         $id_jornada = $dia - 19;
     }else if($mes == 12){
@@ -27,11 +27,35 @@
     }
     // echo $minutos;
     // echo 'f';
-    if($horas = 7 && $minutos>=0 && $minutos<=50){
+    if($horas = 19 && $minutos>=0 && $minutos<=5){
         if($mes == 11){
             $id_jornada = $dia - 19;
         }else if($mes == 12){
-            $id_jornada = $dia + 11;
+            if($dia<7){
+                $id_jornada = $dia + 11;
+            }else{
+                switch($dia){
+                    case 9:
+                        $id_jornada = 18;
+                        break;
+                    case 10:
+                        $id_jornada = 19;
+                        break;
+                    case 13:
+                        $id_jornada = 20;
+                        break;
+                    case 14:
+                        $id_jornada = 21;
+                        break;
+                    case 17:
+                        $id_jornada = 22;
+                        break;
+                    case 18:
+                        $id_jornada = 23;
+                        break;
+                }
+            }
+            
         }
         $object1 = new partidos();
         $object2 = new Apuestas();
@@ -42,10 +66,10 @@
         // echo 'siu';
         for($i=0;$i<count($ids);$i++){
             echo $object2 -> verificar_apuesta($ids[$i]);
-            echo '+';
+            // echo '+';
         }
     }else{
-        echo 'false';
+        echo 0;
     }
 
     // $fecha_limite = date_create_from_format('d/m/y H:i',$dia_mes_año[0]."/".$dia_mes_año[1]."/".$dia_mes_año[2].' '.'17:00');  
