@@ -56,7 +56,7 @@
 <body>
   <div class="contenedor">
     <br>
-    <h1>Puntaje<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
+    <h1>Ranking<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
     <br>
 
     <div class="table-responsive">

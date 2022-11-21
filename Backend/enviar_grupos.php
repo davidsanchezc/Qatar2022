@@ -1,6 +1,5 @@
 <?php
-    require_once "./Grupos.php";
-    
+    require_once "./class/Grupos.php";
     $grupo = $_POST['id_grupo'];
     
     $object = new grupos();

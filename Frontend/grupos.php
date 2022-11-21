@@ -1,37 +1,3 @@
-<?php 
-	// require_once "../../clases/Conexion.php";
-	// $c= new conectar();
-	// $conexion=$c->conexion();
-	// $sql="SELECT art.nombre,
-	// 				mar.nombremarca,
-	// 				cat.nombreCategoria,
-	// 				art.descripcion,
-	// 				uni.nombreunidad,
-	// 				art.cantidad,
-	// 				art.stockmin,
-	// 				art.serie,
-	// 				ubi.nombreubicaciones,
-	// 				art.precio,
-	// 				img.ruta,						
-	// 				art.id_producto
-	// 	  from articulos as art
-	// 	  inner join marca as mar
-	// 	  on art.id_marca=mar.id_marca
-	// 	  inner join categorias as cat
-	// 	  on art.id_categoria=cat.id_categoria
-	// 	  inner join imagenes as img
-	// 	  on art.id_imagen=img.id_imagen
-	// 	  inner join ubicaciones as ubi
-	// 	  on art.id_ubicacion=ubi.id_ubicaciones
-	// 	  inner join unidad as uni
-	// 	  on art.id_unidad=uni.id_unidad
-	// 	  order by art.serie desc";
-		  
-	// $result=mysqli_query($conexion,$sql);
-
- ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,9 +12,10 @@
 	<link rel="icon" type="image/ico" href="../img/logo_qatar.ico"/>
   <!-- Estilo Personalizado -->
 	<link rel="stylesheet" type="text/css" href="../css/registro.css"/>  
-	<link rel="stylesheet" type="text/css" href="../css/estilos.css"/>  
-	<script src="librerias/jquery-3.2.1.min.js"></script>
-	<script src="js/funciones.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
+	<script src="../librerias/jquery-3.2.1.min.js"></script>
+	<script src="../librerias/jquery-3.5.1.js"></script>
+	<script src="../js/validar.js"></script>
   <?php 
   require_once "menu.php"; 
   ?>
@@ -58,7 +25,7 @@
     <br>
     <h1>Grupos<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
 
-    <h2>Grupo A</h2>
+    <h2 id="A">Grupo A</h2>
 
     <div class="table-responsive">
       <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
@@ -97,7 +64,7 @@
     </div>
 
     
-    <h2>Grupo B</h2>
+    <!-- <h2>Grupo B</h2>
 
     <div class="table-responsive">
       <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
@@ -133,8 +100,8 @@
           </tr>
         </tbody>
       </table>
-    </div>
-
+    </div> -->
+<!-- 
     <h2>Grupo C</h2>
 
     <div class="table-responsive">
@@ -361,7 +328,7 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
 
     <br>
     <script src="../js/index.js"></script>
@@ -372,12 +339,51 @@
 </body>
 </html>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(document).ready(function() {
       $('#tablaArticuloDataTable').DataTable({
       language : {
         url: "../librerias/datatable/es.json"
       }
     });
+    } );
+</script> -->
+
+<script>
+		window.onload=function() {
+
+		}
+		</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    alert('OK');
+      console.log("hola")
+			$.ajax({
+				type:"POST",
+				data:'id_grupo=' + 'A',
+				url:"../Backend/enviar_grupos.php",
+				success:function(r){
+          console.log(r)
+					dato=jQuery.parseJSON(r);
+          console.log(dato);
+          alert(dato);
+			// 		for(let i=0; i<dato.length; i++){
+			// 			$("#tableSoliP>tbody").append(`<tr id="${i}" class="child" style="background-color: #454c52;">
+			// 			<td>${dato[i]['id_p']}</td>
+			// 			<td>${dato[i]['nombre']}</td>
+			// 			<td>${dato[i]['descripcion']}</td>
+			// 			<td>${dato[i]['serie']}</td>
+			// 			<td id="cant${i}">${dato[i]['cantidad']}</td>
+			// 			<td id="stock${i}">${dato[i]['stock']}</td>
+			// 			<td><img width="50" height="50" class="img-thumbnail" id="imgp" src="${dato[i]['ruta']}"/></td><td><span data-toggle="modal" data-target="#abremodalUpdateProducto"  class="btn btn-warning btn-xs" onclick="actualizarCant(${i})">
+			// 	<span class="glyphicon glyphicon-pencil"></span>
+			// </span></td><td><span class="btn btn-danger btn-xs" onclick="quitar(${i})">
+      //           <span class="glyphicon glyphicon-remove"></span>
+      //       </span></td></tr>`);
+			// 		}
+				}
+			});
+    
     } );
 </script>

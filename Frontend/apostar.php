@@ -60,20 +60,84 @@
 
     <h2>Grupo A</h2>
 
-    <div class="btn btn-outline-dark local">
-        <h1>
-          HOLA
-        </h1>
-    </div>
-    <div class="btn btn-outline-dark empate">
-        <h1>
-          HOLA
-        </h1>
-    </div>
-    <div class="btn btn-outline-dark visita">
-        <h1>
-          HOLA
-        </h1>
+    
+
+    <div class="container">
+      <div class="row row-cols-2 container">
+        <div class="col p-1 m-1 text-center row">
+          <div class="btn btn-outline-dark col m-1 local">
+              <h2>
+                Qatar
+              </h2>
+          </div>
+          <div class="btn btn-outline-dark col m-1 empate">
+              <h2>
+                Empate
+              </h2>
+          </div>
+          <div class="btn btn-outline-dark col m-1 visita">
+              <h2>
+                Ecuador
+              </h2>
+          </div>
+          <div class="btn btn-success mt-3">Apostar</div>
+        </div>
+        <div class="col p-1 m-1 text-center row">
+          <div class="btn btn-outline-dark col m-1 local">
+              <h2>
+                Qatar
+              </h2>
+          </div>
+          <div class="btn btn-outline-dark col m-1 empate">
+              <h2>
+                Empate
+              </h2>
+          </div>
+          <div class="btn btn-outline-dark col m-1 visita">
+              <h2>
+                Ecuador
+              </h2>
+          </div>
+          <div class="btn btn-success mt-3">Apostar</div>
+        </div>
+        <div class="col p-1 m-1 text-center row">
+          <div class="btn btn-outline-dark col m-1 local">
+              <h2>
+                Qatar
+              </h2>
+          </div>
+          <div class="btn btn-outline-dark col m-1 empate">
+              <h2>
+                Empate
+              </h2>
+          </div>
+          <div class="btn btn-outline-dark col m-1 visita">
+              <h2>
+                Ecuador
+              </h2>
+          </div>
+          <div class="btn btn-success mt-3">Apostar</div>
+        </div>
+        <div class="col p-1 m-1 text-center row">
+          <div class="btn btn-outline-dark col m-1 local">
+              <h2>
+                Qatar
+              </h2>
+          </div>
+          <div class="btn btn-outline-dark col m-1 empate">
+              <h2>
+                Empate
+              </h2>
+          </div>
+          <div class="btn btn-outline-dark col m-1 visita">
+              <h2>
+                Ecuador
+              </h2>
+          </div>
+          <div class="btn btn-success mt-3">Apostar</div>
+        </div>
+        
+      </div>
     </div>
     
 

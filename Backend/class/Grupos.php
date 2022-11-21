@@ -1,5 +1,6 @@
 <?php
-    require_once "./ConexionAPI.php";
+    // require_once "./ConexionAPI.php";
+    require_once($_SERVER['DOCUMENT_ROOT']."/Qatar2022/Backend/class/ConexionAPI.php");
     
     class grupos{
 
@@ -74,7 +75,7 @@
         
     }
     // $data = json_decode(file_get_contents('https://api.mercadolibre.com/users/226384143/'));
-    $object = new grupos();
-    $res = $object->tabla_grupo('A');
-    echo json_encode($res);
+    // $object = new grupos();
+    // $res = $object->tabla_grupo('A');
+    // echo json_encode($res);
 ?>
