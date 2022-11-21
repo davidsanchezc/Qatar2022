@@ -26,7 +26,7 @@
                 
 
                 $Pts = 3*$marcador_Acertado + 2*$diferencia_Acertada + 1*$ganador_Acertado;
-
+                
                 $query_apuestas = "SELECT * FROM apuestas WHERE id_user = $id_user";
                 $result_apuestas = mysqli_query($conn, $query_apuestas);
                 $nro_apuestas = mysqli_num_rows($result_apuestas);
