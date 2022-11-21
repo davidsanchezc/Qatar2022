@@ -1,5 +1,5 @@
 <?php
-    require_once "../../class/Apuestas.php";
+    require_once "./class/Apuestas.php";
     
     $object = new Apuestas();
 

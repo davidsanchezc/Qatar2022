@@ -1,6 +1,6 @@
 <?php
-    require_once "../../class/Users.php";
-    require_once "./Partidos.php";
+    require_once "./class/Users.php";
+    require_once "./class/Partidos.php";
     class apuestas{
         function realizar_apuesta($apuesta){
 
@@ -46,63 +46,70 @@
             // $partido -> resultado_partido($id_partido);
         }
         function verificar_apuesta($idpartido){
-            include('../db.php');
+            include('db.php');
             $idUsuario = $_SESSION['iduser']; 
             $query = "SELECT * FROM apuestas WHERE id_user = $idUsuario and id_partido = $idpartido";
             $result = mysqli_query($conn, $query);
-            
-            $fila = mysqli_fetch_row($result);
+            // if(!$result){
+            //     echo "siu";
+            // }
+            if(mysqli_num_rows($result) > 0){
+                $fila = mysqli_fetch_row($result);
 
-            $id_partido = $fila[2];
-            $goles_local_apostado = $fila[3];
-            $goles_visitante_apostado = $fila[4];
-            $verificado = $fila[5];
-            if($verificado==1){
+                $id_partido = $fila[2];
+                $goles_local_apostado = $fila[3];
+                $goles_visitante_apostado = $fila[4];
+                $verificado = $fila[5];
+                if($verificado==1){
+                    return false;
+                }else if($verificado==0){
+                    $partido = new partidos();
+                    $resultados_partido = $partido -> resultado_partido($id_partido);
+
+                    // $ganador_real = 0;
+                    // $ganador_apostado = 0;
+                    $goles_local_real = $resultados_partido['goles_local'];
+                    $goles_visitante_real = $resultados_partido['goles_visitante'];
+                    $diferencia_goles_real = 0;
+                    $diferencia_goles_apostado = 0;
+
+                    $apostado = self::ganador_y_diferencia_goles($goles_local_apostado, $goles_visitante_apostado);
+                    $real = self::ganador_y_diferencia_goles($goles_local_real, $goles_visitante_real);
+
+
+                    $marcador_Acertado = 0;
+                    $diferencia_Acertada = 0;
+                    $ganador_Acertado = 0;
+                    
+                    
+                    if(($goles_local_apostado == $goles_local_real) && ($goles_visitante_apostado == $goles_visitante_real) ){
+                        $marcador_Acertado = 1;
+                    }else if($apostado[1] == $real[1]){
+                        $diferencia_Acertada = 1;
+                    }else if($apostado[0] == $real[0]){
+                        $ganador_Acertado = 1;
+                    }
+                    
+                    $query0 = "SELECT ganador_Acertado, diferencia_Acertada, marcador_Acertado FROM ranking WHERE id_user = $idUsuario";
+                    $result0 = mysqli_query($conn, $query0);
+                    
+                    if(mysqli_num_rows($result0) > 0){
+                        $fila = mysqli_fetch_row($result0);
+
+                        $marcador_Acertado = $fila[2] + $marcador_Acertado;
+                        $diferencia_Acertada = $fila[1] + $diferencia_Acertada;
+                        $ganador_Acertado = $fila[0] + $ganador_Acertado;
+
+                        $query = "UPDATE ranking SET ganador_Acertado=$ganador_Acertado, diferencia_Acertada=$diferencia_Acertada, marcador_Acertado=$marcador_Acertado WHERE id_user= $idUsuario";
+                        return mysqli_query($conn, $query);
+                    }else{
+                        $query = "INSERT INTO ranking(id_user, ganador_Acertado, diferencia_Acertada, marcador_Acertado) VALUES ('$idUsuario', '$ganador_Acertado', '$diferencia_Acertada', '$marcador_Acertado')";
+                        return mysqli_query($conn, $query);
+                    }
+                }
+            }else{
                 return false;
-            }else if($verificado==0){
-                $partido = new partidos();
-                $resultados_partido = $partido -> resultado_partido($id_partido);
 
-                // $ganador_real = 0;
-                // $ganador_apostado = 0;
-                $goles_local_real = $resultados_partido['goles_local'];
-                $goles_visitante_real = $resultados_partido['goles_visitante'];
-                $diferencia_goles_real = 0;
-                $diferencia_goles_apostado = 0;
-
-                $apostado = self::ganador_y_diferencia_goles($goles_local_apostado, $goles_visitante_apostado);
-                $real = self::ganador_y_diferencia_goles($goles_local_real, $goles_visitante_real);
-
-
-                $marcador_Acertado = 0;
-                $diferencia_Acertada = 0;
-                $ganador_Acertado = 0;
-                
-                
-                if(($goles_local_apostado == $goles_local_real) && ($goles_visitante_apostado == $goles_visitante_real) ){
-                    $marcador_Acertado = 1;
-                }else if($apostado[1] == $real[1]){
-                    $diferencia_Acertada = 1;
-                }else if($apostado[0] == $real[0]){
-                    $ganador_Acertado = 1;
-                }
-                
-                $query0 = "SELECT ganador_Acertado, diferencia_Acertada, marcador_Acertado FROM ranking WHERE id_user = $idUsuario";
-                $result0 = mysqli_query($conn, $query0);
-                
-                if(mysqli_num_rows($result0) > 0){
-                    $fila = mysqli_fetch_row($result0);
-
-                    $marcador_Acertado = $fila[2] + $marcador_Acertado;
-                    $diferencia_Acertada = $fila[1] + $diferencia_Acertada;
-                    $ganador_Acertado = $fila[0] + $ganador_Acertado;
-
-                    $query = "UPDATE ranking SET ganador_Acertado=$ganador_Acertado, diferencia_Acertada=$diferencia_Acertada, marcador_Acertado=$marcador_Acertado WHERE id_user= $idUsuario";
-                    return mysqli_query($conn, $query);
-                }else{
-                    $query = "INSERT INTO ranking(id_user, ganador_Acertado, diferencia_Acertada, marcador_Acertado) VALUES ('$idUsuario', '$ganador_Acertado', '$diferencia_Acertada', '$marcador_Acertado')";
-                    return mysqli_query($conn, $query);
-                }
             }
             
             

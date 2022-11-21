@@ -4,19 +4,23 @@
         
         public function sign_up($datos){
             include('db.php');
-            $query = "INSERT INTO login(nombres, apellidos, user, password) VALUES ('$datos[0]', '$datos[1]', '$datos[2]', '$datos[3]')";
+            $query = "INSERT INTO usuarios(nombres, apellidos, user, password) VALUES ('$datos[0]', '$datos[1]', '$datos[2]', '$datos[3]')";
+            echo 'siu';
             return mysqli_query($conn, $query);
+            
         }
 
-        public function sing_in($datos){
+        public function sign_in($datos){
             include('db.php');
             $_SESSION['usuario'] = $datos[0];
             $_SESSION['iduser'] = self::traeID($datos);
             // $password = $datos[1];
-            $query = "SELECT * FROM login WHERE user = $datos[0] and password = $datos[1]";
+            $query = "SELECT * FROM usuarios WHERE user = '$datos[0]' and password = '$datos[1]'";
             $resultado = mysqli_query($conn, $query);
-
-            if(mysqli_num_rows($result) > 0){
+            
+            
+            if(mysqli_num_rows($resultado) > 0){
+                // echo 'siu';
 				return 1;
             }else{
                 session_destroy();
@@ -29,7 +33,7 @@
 
 			$password=$datos[1];
             
-			$query = "SELECT id_user FROM usuarios WHERE user='$datos[0]' and password='$password'"; 
+			$query = "SELECT id FROM usuarios WHERE user='$datos[0]' and password='$password'"; 
 			$result = mysqli_query($conn,$query);
 
 			return mysqli_fetch_row($result)[0];

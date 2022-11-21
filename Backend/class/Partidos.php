@@ -1,5 +1,5 @@
 <?php
-    require_once "./ConexionAPI.php";
+    require_once($_SERVER['DOCUMENT_ROOT']."/Qatar2022/Backend/class/ConexionAPI.php");
     
     class partidos{
     
@@ -148,7 +148,7 @@
     }
     // $data = json_decode(file_get_contents('https://api.mercadolibre.com/users/226384143/'));
     $object = new partidos();
-    $res = $object->encuentros(3);
+    $res = $object->conectar_partidos_jornada(11);
     // $fecha_hora = explode(' ', $res['data'][0]['local_date']);
     // echo $fecha = $fecha_hora[0];
     // echo '<br>';

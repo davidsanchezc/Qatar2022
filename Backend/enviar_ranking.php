@@ -1,6 +1,6 @@
 <?php
     // require_once "./Users.php";
-    require_once "./Ranking.php";
+    require_once "./class/Ranking.php";
     
     // $grupo = $_POST['id_grupo'];
     

@@ -1,6 +1,6 @@
 <?php
-    require_once "./Users.php";
-    require_once "./Apuestas.php";
+    require_once "./class/Users.php";
+    require_once "./class/Apuestas.php";
     class rankings{
 
         function user_ranking($id_user){
@@ -38,6 +38,7 @@
         }
 
         function all_user_ranking(){
+            include('db.php');
             $all_user_ranking = array();
             $query_id = "SELECT id FROM users";
             $result = mysqli_query($conn, $query_id);

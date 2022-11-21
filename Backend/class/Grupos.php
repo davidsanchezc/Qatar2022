@@ -49,10 +49,10 @@
             return $datos_grupo;
         }
 
-        function tabla_grupo($grupo){
+        function tabla_grupo($id_grupo){
             $equipos = array();
-            $grupo = self::conectar_grupo($grupo);
-
+            $grupo = self::conectar_grupo($id_grupo);
+            echo 'siu';
             $a = $grupo['data'][0]['teams'];
 
             for($i = 0; $i < count($a); $i++){
@@ -70,14 +70,12 @@
                 $equipo = array($Pais, $PJ, $PG, $PE, $PP, $GF, $GC, $DG, $Pts);
                 array_push($equipos, $equipo);
             }
+            echo 'siu';
 
             return $equipos;
         }
-
+        
         
     }
-    // $data = json_decode(file_get_contents('https://api.mercadolibre.com/users/226384143/'));
-    // $object = new grupos();
-    // $res = $object->tabla_grupo('A');
-    // echo json_encode($res);
+    
 ?>

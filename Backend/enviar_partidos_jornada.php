@@ -1,6 +1,6 @@
 <?php
-    require_once "./Partidos.php";
-    
+    require_once "./class/Partidos.php";
+    // Se tarda 
     $jornada = $_POST['id_jornada'];
     
     $object = new partidos();
