@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once "./class/Users.php";
-
+    
     $object = new users();
     
     // if(isset($_POST['sing_in'])){

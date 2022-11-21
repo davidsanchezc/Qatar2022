@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "./class/Partidos.php";
     require_once "./class/Apuestas.php";
     // echo 'f';
@@ -26,7 +27,7 @@
     }
     // echo $minutos;
     // echo 'f';
-    if($horas = 5 && $minutos>0 && $minutos<=5){
+    if($horas = 7 && $minutos>=0 && $minutos<=50){
         if($mes == 11){
             $id_jornada = $dia - 19;
         }else if($mes == 12){
@@ -38,9 +39,10 @@
         // $partidos = new partidos();
 
         $ids = $object1->get_id_partidos($id_jornada);
-
+        // echo 'siu';
         for($i=0;$i<count($ids);$i++){
             echo $object2 -> verificar_apuesta($ids[$i]);
+            echo '+';
         }
     }else{
         echo 'false';

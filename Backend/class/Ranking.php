@@ -7,7 +7,7 @@
             // $o_apuestas = apuestas();
             // $o_users = users();
             include('db.php');
-            $query = "SELECT * FROM ranking WHERE id_user = $id_user";
+            $query = "SELECT * FROM ranking WHERE id_user = '$id_user'";
             $result = mysqli_query($conn, $query);
             if(mysqli_num_rows($result) > 0){
                 $fila_acierto = mysqli_fetch_row($result);
@@ -15,14 +15,14 @@
                 $diferencia_Acertada = $fila_acierto[2];
                 $marcador_Acertado = $fila_acierto[3];
 
-                $query_nombres_apellidos = "SELECT nombres, apellidos FROM usuarios WHERE id = id_user";
-                $result_nombres_apellidos = mysqli_query($conn, $query);
+                $query_nombres_apellidos = "SELECT nombres, apellidos FROM usuarios WHERE id = '$id_user'";
+                $result_nombres_apellidos = mysqli_query($conn, $query_nombres_apellidos);
                 $fila_nombres_apellidos = mysqli_fetch_row($result_nombres_apellidos);
 
                 $nombres = $fila_nombres_apellidos[0];
                 $apellidos = $fila_nombres_apellidos[1];
 
-                $Pts = 3*$marcador_Acertado + 2*$diferencia_Acertada + 1*$diferencia_Acertada;
+                $Pts = 3*$marcador_Acertado + 2*$diferencia_Acertada + 1*$ganador_Acertado;
 
                 $query_apuestas = "SELECT * FROM apuestas WHERE id_user = $id_user";
                 $result_apuestas = mysqli_query($conn, $query_apuestas);
@@ -32,20 +32,26 @@
 
                 return array($nombres, $apellidos, $nro_apuestas, $marcador_Acertado, $diferencia_Acertada, $ganador_Acertado, $Pts);
             }
-
             
             
+            return 0;   
         }
 
         function all_user_ranking(){
             include('db.php');
             $all_user_ranking = array();
-            $query_id = "SELECT id FROM users";
+            $query_id = "SELECT id FROM usuarios";
             $result = mysqli_query($conn, $query_id);
             $nro_users = mysqli_num_rows($result);
-            
+            $query_one_id = "SELECT id FROM usuarios";
+            $resultado = mysqli_query($conn, $query_id);
             for($i=0;$i<$nro_users;$i++){
-                array_push($all_user_ranking, user_ranking($i));
+                
+                // $resultado = mysqli_query($conn, $query_id);
+                $fila = mysqli_fetch_row($resultado);
+                // echo $fila[0];
+                $ranking_one_user = self::user_ranking($fila[0]);
+                array_push($all_user_ranking, $ranking_one_user);
             }
 
             return $all_user_ranking;
