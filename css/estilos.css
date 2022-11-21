@@ -12,3 +12,25 @@
 h2{
   color: #fff;
 }
+
+.btn-pais{
+  /* border-color: #931f47; */
+  border-color: #ffffffba;
+}
+
+.btn-pais:hover{
+  /* background-color: #931f47; */
+  background-color: #ffffffba;
+  color: #000;
+}
+
+.contenedor-paises{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.col-pais{
+  width: calc(33.33%-20px);
+}

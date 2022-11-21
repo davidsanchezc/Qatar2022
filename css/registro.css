@@ -10,7 +10,7 @@ h1{
 body{
   background-image: url("../img/fondo_registro.webp");
   /* background-image: url("../img/fondo_qatar.png"); */
-  background-size: cover;
+  /* background-size: cover; */
 }
 
 .header {

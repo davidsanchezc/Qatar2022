@@ -14,9 +14,9 @@
           <li class="nav-item">
             <a class="nav-link" href="./grupos.php">Tabla Grupos</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="./partidos.php">Partidos</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="./ranking.php">Ranking Jugadores</a>
           </li>

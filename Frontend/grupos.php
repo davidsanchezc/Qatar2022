@@ -218,17 +218,17 @@
     </div>
 
     <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item"><a class="page-link" href="?estado=A">A</a></li>
-    <li class="page-item"><a class="page-link" href="?estado=B">B</a></li>
-    <li class="page-item"><a class="page-link" href="?estado=C">C</a></li>
-    <li class="page-item"><a class="page-link" href="?estado=D">D</a></li>
-    <li class="page-item"><a class="page-link" href="?estado=E">E</a></li>
-    <li class="page-item"><a class="page-link" href="?estado=F">F</a></li>
-    <li class="page-item"><a class="page-link" href="?estado=G">G</a></li>
-    <li class="page-item"><a class="page-link" href="?estado=H">H</a></li>
-  </ul>
-</nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="?estado=A">A</a></li>
+        <li class="page-item"><a class="page-link" href="?estado=B">B</a></li>
+        <li class="page-item"><a class="page-link" href="?estado=C">C</a></li>
+        <li class="page-item"><a class="page-link" href="?estado=D">D</a></li>
+        <li class="page-item"><a class="page-link" href="?estado=E">E</a></li>
+        <li class="page-item"><a class="page-link" href="?estado=F">F</a></li>
+        <li class="page-item"><a class="page-link" href="?estado=G">G</a></li>
+        <li class="page-item"><a class="page-link" href="?estado=H">H</a></li>
+      </ul>
+    </nav>
 
     <br>
     <script src="../js/index.js"></script>
@@ -247,110 +247,111 @@
     	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 	$(document).ready(function(){
-
     letra = getParameterByName('estado');
     if(letra){
-      $(document).ready(function() {
-        $.ajax({
-          type:"POST",
-          data:'id_grupo=' + letra,
-          url:"../Backend/enviar_grupos.php",
-          success:function(r){
-            console.log(r)
-            dato=jQuery.parseJSON(r);
-            for(let i=0; i<dato.length; i++){
-              $(`#table${letra}>tbody`).append(`<tr id="${i}" class="child" style="background-color: #454c52;">
-              <td>${i+1}</td>
-              <td>${dato[i][0]}</td>
-              <td>${dato[i][1]}</td>
-              <td>${dato[i][2]}</td>
-              <td id="cant${i}">${dato[i][3]}</td>
-              <td>${dato[i][4]}</td>
-              <td>${dato[i][5]}</td>
-              <td>${dato[i][6]}</td>
-              <td>${dato[i][7]}</td>
-              <td>${dato[i][8]}</td>
-              </tr>`);
-            }
+      $.ajax({
+        type:"POST",
+        data:'id_grupo=' + letra,
+        url:"../Backend/enviar_grupos.php",
+        success:function(r){
+          console.log(r)
+          dato=jQuery.parseJSON(r);
+          for(let i=0; i<dato.length; i++){
+            $(`#table${letra}>tbody`).append(`<tr id="${i}" class="child" style="background-color: #454c52;">
+            <td>${i+1}</td>
+            <td>${dato[i][0]}</td>
+            <td>${dato[i][1]}</td>
+            <td>${dato[i][2]}</td>
+            <td id="cant${i}">${dato[i][3]}</td>
+            <td>${dato[i][4]}</td>
+            <td>${dato[i][5]}</td>
+            <td>${dato[i][6]}</td>
+            <td>${dato[i][7]}</td>
+            <td>${dato[i][8]}</td>
+            </tr>`);
           }
-        });
+        }
       });    
-    }
-
-		if(getParameterByName('estado')=='A'){
-			$('#divA').prop("hidden", false);
-			$('#divB').prop("hidden", true);
-			$('#divC').prop("hidden", true);
-			$('#divD').prop("hidden", true);
-			$('#divE').prop("hidden", true);
-			$('#divF').prop("hidden", true);
-			$('#divG').prop("hidden", true);
-			$('#divH').prop("hidden", true);
-		}
-		else if(getParameterByName('estado')=='B'){
-			$('#divA').prop("hidden", true);
-			$('#divB').prop("hidden", false);
-			$('#divC').prop("hidden", true);
-			$('#divD').prop("hidden", true);
-			$('#divE').prop("hidden", true);
-			$('#divF').prop("hidden", true);
-			$('#divG').prop("hidden", true);
-			$('#divH').prop("hidden", true);
-		}
-		else if(getParameterByName('estado')=='C'){
-			$('#divA').prop("hidden", true);
-			$('#divB').prop("hidden", true);
-			$('#divC').prop("hidden", false);
-			$('#divD').prop("hidden", true);
-      $('#divE').prop("hidden", true);
-      $('#divF').prop("hidden", true);
-      $('#divG').prop("hidden", true);
-      $('#divH').prop("hidden", true);
-		}else if(getParameterByName('estado')=='D'){
-      $('#divA').prop("hidden", true);
-			$('#divB').prop("hidden", true);
-			$('#divC').prop("hidden", true);
-			$('#divD').prop("hidden", false);
-      $('#divE').prop("hidden", true);
-      $('#divF').prop("hidden", true);
-      $('#divG').prop("hidden", true);
-      $('#divH').prop("hidden", true);
-    }else if(getParameterByName('estado')=='E'){
-      $('#divA').prop("hidden", true);
-      $('#divB').prop("hidden", true);
-      $('#divC').prop("hidden", true);
-      $('#divD').prop("hidden", true);
-      $('#divE').prop("hidden", false);
-      $('#divF').prop("hidden", true);
-      $('#divG').prop("hidden", true);
-      $('#divH').prop("hidden", true);
-    }else if(getParameterByName('estado')=='F'){
-      $('#divA').prop("hidden", true);
-      $('#divB').prop("hidden", true);
-      $('#divC').prop("hidden", true);
-      $('#divD').prop("hidden", true);
-      $('#divE').prop("hidden", true);
-      $('#divF').prop("hidden", false);
-      $('#divG').prop("hidden", true);
-      $('#divH').prop("hidden", true);
-    }else if(getParameterByName('estado')=='G'){
-      $('#divA').prop("hidden", true);
-      $('#divB').prop("hidden", true);
-      $('#divC').prop("hidden", true);
-      $('#divD').prop("hidden", true);
-      $('#divE').prop("hidden", true);
-      $('#divF').prop("hidden", true);
-      $('#divG').prop("hidden", false);
-      $('#divH').prop("hidden", true);
-    }else if(getParameterByName('estado')=='H'){
-      $('#divA').prop("hidden", true);
-      $('#divB').prop("hidden", true);
-      $('#divC').prop("hidden", true);
-      $('#divD').prop("hidden", true);
-      $('#divE').prop("hidden", true);
-      $('#divF').prop("hidden", true);
-      $('#divG').prop("hidden", true);
-      $('#divH').prop("hidden", false);
+      if(letra=='A'){
+        $('#divA').prop("hidden", false);
+        $('#divB').prop("hidden", true);
+        $('#divC').prop("hidden", true);
+        $('#divD').prop("hidden", true);
+        $('#divE').prop("hidden", true);
+        $('#divF').prop("hidden", true);
+        $('#divG').prop("hidden", true);
+        $('#divH').prop("hidden", true);
+      }
+      else if(letra=='B'){
+        $('#divA').prop("hidden", true);
+        $('#divB').prop("hidden", false);
+        $('#divC').prop("hidden", true);
+        $('#divD').prop("hidden", true);
+        $('#divE').prop("hidden", true);
+        $('#divF').prop("hidden", true);
+        $('#divG').prop("hidden", true);
+        $('#divH').prop("hidden", true);
+      }
+      else if(letra=='C'){
+        $('#divA').prop("hidden", true);
+        $('#divB').prop("hidden", true);
+        $('#divC').prop("hidden", false);
+        $('#divD').prop("hidden", true);
+        $('#divE').prop("hidden", true);
+        $('#divF').prop("hidden", true);
+        $('#divG').prop("hidden", true);
+        $('#divH').prop("hidden", true);
+      }
+      else if(letra=='D'){
+        $('#divA').prop("hidden", true);
+        $('#divB').prop("hidden", true);
+        $('#divC').prop("hidden", true);
+        $('#divD').prop("hidden", false);
+        $('#divE').prop("hidden", true);
+        $('#divF').prop("hidden", true);
+        $('#divG').prop("hidden", true);
+        $('#divH').prop("hidden", true);
+      }
+      else if(letra=='E'){
+        $('#divA').prop("hidden", true);
+        $('#divB').prop("hidden", true);
+        $('#divC').prop("hidden", true);
+        $('#divD').prop("hidden", true);
+        $('#divE').prop("hidden", false);
+        $('#divF').prop("hidden", true);
+        $('#divG').prop("hidden", true);
+        $('#divH').prop("hidden", true);
+      }
+      else if(letra=='F'){
+        $('#divA').prop("hidden", true);
+        $('#divB').prop("hidden", true);
+        $('#divC').prop("hidden", true);
+        $('#divD').prop("hidden", true);
+        $('#divE').prop("hidden", true);
+        $('#divF').prop("hidden", false);
+        $('#divG').prop("hidden", true);
+        $('#divH').prop("hidden", true);
+      }
+      else if(letra=='G'){
+        $('#divA').prop("hidden", true);
+        $('#divB').prop("hidden", true);
+        $('#divC').prop("hidden", true);
+        $('#divD').prop("hidden", true);
+        $('#divE').prop("hidden", true);
+        $('#divF').prop("hidden", true);
+        $('#divG').prop("hidden", false);
+        $('#divH').prop("hidden", true);
+      }
+      else if(letra=='H'){
+        $('#divA').prop("hidden", true);
+        $('#divB').prop("hidden", true);
+        $('#divC').prop("hidden", true);
+        $('#divD').prop("hidden", true);
+        $('#divE').prop("hidden", true);
+        $('#divF').prop("hidden", true);
+        $('#divG').prop("hidden", true);
+        $('#divH').prop("hidden", false);
+      }
     }
 	});	
 </script>
