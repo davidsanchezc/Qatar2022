@@ -9,7 +9,7 @@
     // id del formato
     $id_partido = $datos[0];
     $goles_local = $datos[1];
-    $goles_visitante = $datos[1];
+    $goles_visitante = $datos[2];
     // $datos=array($_POST['id_partido'], $_POST['goles_local'], $_POST['goles_visitante']);
     // $datos=array(1,2,0);
 
