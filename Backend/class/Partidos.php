@@ -88,28 +88,22 @@
         function encuentros($id_jornada){
             $encuentros_jornada = array();
 
-            $ids = self::get_id_partidos($id_jornada);
-            // $encuentro = self::conectar_partido();
+            // $ids = self::get_id_partidos($id_jornada);
 
-            for($i= 0; $i < count($ids); $i++){
-                $datos_encuentro = self::conectar_partido($ids[$i]);
-                // echo 'a';
-                $id_partido = $datos_encuentro['data'][0]['id'];
-                $equipo_local = $datos_encuentro['data'][0]['home_team_en'];
-                $equipo_visitante = $datos_encuentro['data'][0]['away_team_en'];
-                $bandera_local = $datos_encuentro['data'][0]['home_flag'];
-                $bandera_visitante = $datos_encuentro['data'][0]['away_flag'];
-
-                $fecha_hora_partido = explode(' ', $datos_encuentro['data'][0]['local_date']);
-                // $fecha_partido = $fecha_hora_partido[0];
-                // $hora = $fecha_hora[1];
+            $datos_partidos = self::conectar_partidos_jornada($id_jornada);
+            $partidos =$datos_partidos['data'];
+            $nro_partidos_jornada = count($partidos);
+            for($i=0;$i<$nro_partidos_jornada;$i++){
+                // $datos_encuentro = $partidos[$i];
+                $id_partido = $partidos[$i]['id'];
+                $equipo_local = $partidos[$i]['home_team_en'];
+                $equipo_visitante = $partidos[$i]['away_team_en'];
+                $bandera_local = $partidos[$i]['home_flag'];
+                $bandera_visitante = $partidos[$i]['away_flag'];
+                $fecha_hora_partido = explode(' ', $partidos[$i]['local_date']);
                 $fecha_partido = explode('/', $fecha_hora_partido[0]);
 
-                $mes = $fecha_partido[0];
-                $dia = $fecha_partido[1];
-                $año = $fecha_partido[2];
-                
-                $new_fecha_partido = $dia.'/'.$mes.'/'.$año;
+                $new_fecha_partido = $dia = $fecha_partido[1].'/'.$dia = $fecha_partido[0].'/'.$fecha_partido[2];
 
 
                 $horas_minutos = explode(':', $fecha_hora_partido[1]);
@@ -128,6 +122,37 @@
                 
                 array_push($encuentros_jornada, $encuentro_jornada);
             }
+            // for($i= 0; $i < count($ids); $i++){
+            //     $datos_encuentro = self::conectar_partido($ids[$i]);
+            //     // echo 'a';
+            //     $id_partido = $datos_encuentro['data'][0]['id'];
+            //     $equipo_local = $datos_encuentro['data'][0]['home_team_en'];
+            //     $equipo_visitante = $datos_encuentro['data'][0]['away_team_en'];
+            //     $bandera_local = $datos_encuentro['data'][0]['home_flag'];
+            //     $bandera_visitante = $datos_encuentro['data'][0]['away_flag'];
+
+            //     $fecha_hora_partido = explode(' ', $datos_encuentro['data'][0]['local_date']);
+            //     $fecha_partido = explode('/', $fecha_hora_partido[0]);
+                
+            //     $new_fecha_partido = $dia = $fecha_partido[1].'/'.$dia = $fecha_partido[0].'/'.$fecha_partido[2];
+
+
+            //     $horas_minutos = explode(':', $fecha_hora_partido[1]);
+            //     $horas_partido = $horas_minutos[0];
+            //     $minutos_partido = $horas_minutos[1];
+            //     $horas_partido = intval($horas_partido);
+            //     // $minutos_partido = intval($minutos_partido);
+                
+            //     $horas_partido = $horas_partido - 8;
+            //     $horas_partido = strval($horas_partido);
+            //     // 5:00
+            //     $new_horas_minuto = $horas_partido.':'.$minutos_partido;
+
+            //     $new_fecha_hora_partido = $new_fecha_partido.' '.$new_horas_minuto;
+            //     $encuentro_jornada = array($id_partido, $equipo_local, $equipo_visitante, $bandera_local, $bandera_visitante, $new_fecha_hora_partido);
+                
+            //     array_push($encuentros_jornada, $encuentro_jornada);
+            // }
             return $encuentros_jornada;
         }
 
@@ -147,8 +172,8 @@
         // }
     }
     // $data = json_decode(file_get_contents('https://api.mercadolibre.com/users/226384143/'));
-    // $object = new partidos();
-    // $res = $object->conectar_partidos_jornada(11);
+    $object = new partidos();
+    $res = $object->conectar_partidos_jornada(2);
     // $fecha_hora = explode(' ', $res['data'][0]['local_date']);
     // echo $fecha = $fecha_hora[0];
     // echo '<br>';
@@ -158,7 +183,7 @@
     // echo  (intval($horas_minutos[1]));
     // date_default_timezone_set('America/Lima');
     // echo gettype(date('m/d/y H:i'));
-    // echo json_encode($res);
+    echo json_encode($res);
     //EC VS QT 11/20/2022 19:00
     //Sen VS PB  11/21/2022 19:00
     //ING VS IRAN 11/21/2022 16:00
