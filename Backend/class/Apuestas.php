@@ -7,7 +7,11 @@
             date_default_timezone_set('America/Lima');
             $fechaActual = date('m/d/y H:i');
             $fecha_hora_actual = explode(' ', $fechaActual);
-            $fecha_partido = $fecha_hora_actual[0];
+            // $fecha_partido_actual = $fecha_hora_actual[0];
+            $fecha_actual = explode('/', $fecha_hora_actual[0]);
+            $mes_actual = $fecha_actual[0];
+            $dia_actual = $fecha_actual[1];
+
             // $hora = $fecha_hora[1];
             $horas_minutos_actual = explode(':', $fecha_hora_actual[1]);
             $horas_actual = $horas_minutos_actual[0];
@@ -20,7 +24,9 @@
             $datos_partido = $partido->conectar_partido($apuesta[0]);
 
             $fecha_hora_partido = explode(' ', $datos_partido['data'][0]['local_date']);
-            $fecha_partido = $fecha_hora_partido[0];
+            $fecha_partido = explode('/', $fecha_hora_partido[0]);
+            $mes_partido = $fecha_partido[0];
+            $dia_partido = $fecha_partido[1];
             // $hora = $fecha_hora[1];
             $horas_minutos = explode(':', $fecha_hora_partido[1]);
             $horas_partido = $horas_minutos[0];
@@ -29,8 +35,17 @@
             $minutos_partido = intval($minutos_partido);
 
             $horas_partido = $horas_partido - 8;
-
-            if($horas_actual<$horas_partido){
+            if($mes_actual<$mes_partido){
+                $idUsuario = $_SESSION['iduser'];
+                include('db.php');
+                $query = "INSERT INTO apuestas(id_user, id_partido, goles_local, goles_visitante) VALUES ('$idUsuario', '$apuesta[0]', '$apuesta[1]', '$apuesta[2]')";
+                return mysqli_query($conn, $query);
+            }else if(($mes_actual==$mes_partido) && ($dia_actual < $datos_partido)){
+                $idUsuario = $_SESSION['iduser'];
+                include('db.php');
+                $query = "INSERT INTO apuestas(id_user, id_partido, goles_local, goles_visitante) VALUES ('$idUsuario', '$apuesta[0]', '$apuesta[1]', '$apuesta[2]')";
+                return mysqli_query($conn, $query);
+            }else if(($mes_actual==$mes_partido) && ($dia_actual < $datos_partido) && ($horas_actual<$horas_partido)){
                 $idUsuario = $_SESSION['iduser'];
                 include('db.php');
                 $query = "INSERT INTO apuestas(id_user, id_partido, goles_local, goles_visitante) VALUES ('$idUsuario', '$apuesta[0]', '$apuesta[1]', '$apuesta[2]')";
