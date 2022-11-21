@@ -18,7 +18,7 @@
             <a class="nav-link" href="./partidos.php">Partidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./puntaje.php">Ranking Jugadores</a>
+            <a class="nav-link" href="./ranking.php">Ranking Jugadores</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../">Cerrar Sesion</a>

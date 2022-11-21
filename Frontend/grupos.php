@@ -25,310 +25,210 @@
     <br>
     <h1>Grupos<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
 
-    <h2 id="A">Grupo A</h2>
-
-    <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
-        <thead class="table-dark">
-          <tr>
-            <td>N°</td>
-            <td>Pais</td>
-            <td>PJ</td>
-            <td>PG</td>
-            <td>PE</td>
-            <td>PP</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>DG</td>
-            <td>Pts</td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Ecuador"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-        </tbody>
-      </table>
+    <div id="divA" hidden>
+      <h2>Grupo A</h2>
+      <div class="table-responsive">
+        <table id="tableA" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+          <thead class="table-dark">
+            <tr>
+              <td>N°</td>
+              <td>Pais</td>
+              <td>PJ</td>
+              <td>PG</td>
+              <td>PE</td>
+              <td>PP</td>
+              <td>GF</td>
+              <td>GC</td>
+              <td>DG</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    
-    <!-- <h2>Grupo B</h2>
-
-    <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
-        <thead class="table-dark">
-          <tr>
-            <td>N°</td>
-            <td>Pais</td>
-            <td>PJ</td>
-            <td>PG</td>
-            <td>PE</td>
-            <td>PP</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>DG</td>
-            <td>Pts</td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Ecuador"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
-<!-- 
-    <h2>Grupo C</h2>
-
-    <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
-        <thead class="table-dark">
-          <tr>
-            <td>N°</td>
-            <td>Pais</td>
-            <td>PJ</td>
-            <td>PG</td>
-            <td>PE</td>
-            <td>PP</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>DG</td>
-            <td>Pts</td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Ecuador"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-        </tbody>
-      </table>
+    <div id="divB" hidden>
+      <h2>Grupo B</h2>
+      <div class="table-responsive">
+        <table id="tableB" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+          <thead class="table-dark">
+            <tr>
+              <td>N°</td>
+              <td>Pais</td>
+              <td>PJ</td>
+              <td>PG</td>
+              <td>PE</td>
+              <td>PP</td>
+              <td>GF</td>
+              <td>GC</td>
+              <td>DG</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <h2>Grupo D</h2>
-
-    <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
-        <thead class="table-dark">
-          <tr>
-            <td>N°</td>
-            <td>Pais</td>
-            <td>PJ</td>
-            <td>PG</td>
-            <td>PE</td>
-            <td>PP</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>DG</td>
-            <td>Pts</td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Ecuador"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-        </tbody>
-      </table>
+    <div id="divC" hidden>
+      <h2>Grupo C</h2>
+      <div class="table-responsive">
+        <table id="tableC" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+          <thead class="table-dark">
+            <tr>
+              <td>N°</td>
+              <td>Pais</td>
+              <td>PJ</td>
+              <td>PG</td>
+              <td>PE</td>
+              <td>PP</td>
+              <td>GF</td>
+              <td>GC</td>
+              <td>DG</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <h2>Grupo E</h2>
-
-    <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
-        <thead class="table-dark">
-          <tr>
-            <td>N°</td>
-            <td>Pais</td>
-            <td>PJ</td>
-            <td>PG</td>
-            <td>PE</td>
-            <td>PP</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>DG</td>
-            <td>Pts</td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Ecuador"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-        </tbody>
-      </table>
+    <div id="divD" hidden>
+      <h2>Grupo D</h2>
+      <div class="table-responsive">
+        <table id="tableD" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+          <thead class="table-dark">
+            <tr>
+              <td>N°</td>
+              <td>Pais</td>
+              <td>PJ</td>
+              <td>PG</td>
+              <td>PE</td>
+              <td>PP</td>
+              <td>GF</td>
+              <td>GC</td>
+              <td>DG</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <h2>Grupo F</h2>
-
-    <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
-        <thead class="table-dark">
-          <tr>
-            <td>N°</td>
-            <td>Pais</td>
-            <td>PJ</td>
-            <td>PG</td>
-            <td>PE</td>
-            <td>PP</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>DG</td>
-            <td>Pts</td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Ecuador"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-        </tbody>
-      </table>
+    <div id="divE" hidden>
+      <h2>Grupo E</h2>
+      <div class="table-responsive">
+        <table id="tableE" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+          <thead class="table-dark">
+            <tr>
+              <td>N°</td>
+              <td>Pais</td>
+              <td>PJ</td>
+              <td>PG</td>
+              <td>PE</td>
+              <td>PP</td>
+              <td>GF</td>
+              <td>GC</td>
+              <td>DG</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <h2>Grupo G</h2>
-
-    <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
-        <thead class="table-dark">
-          <tr>
-            <td>N°</td>
-            <td>Pais</td>
-            <td>PJ</td>
-            <td>PG</td>
-            <td>PE</td>
-            <td>PP</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>DG</td>
-            <td>Pts</td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Ecuador"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-        </tbody>
-      </table>
+    <div id="divF" hidden>
+      <h2>Grupo F</h2>
+      <div class="table-responsive">
+        <table id="tableF" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+          <thead class="table-dark">
+            <tr>
+              <td>N°</td>
+              <td>Pais</td>
+              <td>PJ</td>
+              <td>PG</td>
+              <td>PE</td>
+              <td>PP</td>
+              <td>GF</td>
+              <td>GC</td>
+              <td>DG</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <h2>Grupo H</h2>
+    <div id="divG" hidden>
+      <h2>Grupo G</h2>
+      <div class="table-responsive">
+        <table id="tableG" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+          <thead class="table-dark">
+            <tr>
+              <td>N°</td>
+              <td>Pais</td>
+              <td>PJ</td>
+              <td>PG</td>
+              <td>PE</td>
+              <td>PP</td>
+              <td>GF</td>
+              <td>GC</td>
+              <td>DG</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
-        <thead class="table-dark">
-          <tr>
-            <td>N°</td>
-            <td>Pais</td>
-            <td>PJ</td>
-            <td>PG</td>
-            <td>PE</td>
-            <td>PP</td>
-            <td>GF</td>
-            <td>GC</td>
-            <td>DG</td>
-            <td>Pts</td>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Ecuador"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
+    <div id="divH" hidden>
+      <h2>Grupo H</h2>
+      <div class="table-responsive">
+        <table id="tableH" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+          <thead class="table-dark">
+            <tr>
+              <td>N°</td>
+              <td>Pais</td>
+              <td>PJ</td>
+              <td>PG</td>
+              <td>PE</td>
+              <td>PP</td>
+              <td>GF</td>
+              <td>GC</td>
+              <td>DG</td>
+              <td>Pts</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="?estado=A">A</a></li>
+    <li class="page-item"><a class="page-link" href="?estado=B">B</a></li>
+    <li class="page-item"><a class="page-link" href="?estado=C">C</a></li>
+    <li class="page-item"><a class="page-link" href="?estado=D">D</a></li>
+    <li class="page-item"><a class="page-link" href="?estado=E">E</a></li>
+    <li class="page-item"><a class="page-link" href="?estado=F">F</a></li>
+    <li class="page-item"><a class="page-link" href="?estado=G">G</a></li>
+    <li class="page-item"><a class="page-link" href="?estado=H">H</a></li>
+  </ul>
+</nav>
 
     <br>
     <script src="../js/index.js"></script>
@@ -339,51 +239,118 @@
 </body>
 </html>
 
-<!-- <script type="text/javascript">
-  $(document).ready(function() {
-      $('#tablaArticuloDataTable').DataTable({
-      language : {
-        url: "../librerias/datatable/es.json"
-      }
-    });
-    } );
-</script> -->
-
-<script>
-		window.onload=function() {
-
-		}
-		</script>
-
 <script type="text/javascript">
-  $(document).ready(function() {
-    alert('OK');
-      console.log("hola")
-			$.ajax({
-				type:"POST",
-				data:'id_grupo=' + 'A',
-				url:"../Backend/enviar_grupos.php",
-				success:function(r){
-          console.log(r)
-					dato=jQuery.parseJSON(r);
-          console.log(dato);
-          alert(dato);
-			// 		for(let i=0; i<dato.length; i++){
-			// 			$("#tableSoliP>tbody").append(`<tr id="${i}" class="child" style="background-color: #454c52;">
-			// 			<td>${dato[i]['id_p']}</td>
-			// 			<td>${dato[i]['nombre']}</td>
-			// 			<td>${dato[i]['descripcion']}</td>
-			// 			<td>${dato[i]['serie']}</td>
-			// 			<td id="cant${i}">${dato[i]['cantidad']}</td>
-			// 			<td id="stock${i}">${dato[i]['stock']}</td>
-			// 			<td><img width="50" height="50" class="img-thumbnail" id="imgp" src="${dato[i]['ruta']}"/></td><td><span data-toggle="modal" data-target="#abremodalUpdateProducto"  class="btn btn-warning btn-xs" onclick="actualizarCant(${i})">
-			// 	<span class="glyphicon glyphicon-pencil"></span>
-			// </span></td><td><span class="btn btn-danger btn-xs" onclick="quitar(${i})">
-      //           <span class="glyphicon glyphicon-remove"></span>
-      //       </span></td></tr>`);
-			// 		}
-				}
-			});
-    
-    } );
+	function getParameterByName(estado) {
+    	estado = estado.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    	var regex = new RegExp("[\\?&]" + estado + "=([^&#]*)"),
+    	results = regex.exec(location.search);
+    	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+	$(document).ready(function(){
+
+    letra = getParameterByName('estado');
+    if(letra){
+      $(document).ready(function() {
+        $.ajax({
+          type:"POST",
+          data:'id_grupo=' + letra,
+          url:"../Backend/enviar_grupos.php",
+          success:function(r){
+            console.log(r)
+            dato=jQuery.parseJSON(r);
+            for(let i=0; i<dato.length; i++){
+              $(`#table${letra}>tbody`).append(`<tr id="${i}" class="child" style="background-color: #454c52;">
+              <td>${i+1}</td>
+              <td>${dato[i][0]}</td>
+              <td>${dato[i][1]}</td>
+              <td>${dato[i][2]}</td>
+              <td id="cant${i}">${dato[i][3]}</td>
+              <td>${dato[i][4]}</td>
+              <td>${dato[i][5]}</td>
+              <td>${dato[i][6]}</td>
+              <td>${dato[i][7]}</td>
+              <td>${dato[i][8]}</td>
+              </tr>`);
+            }
+          }
+        });
+      });    
+    }
+
+		if(getParameterByName('estado')=='A'){
+			$('#divA').prop("hidden", false);
+			$('#divB').prop("hidden", true);
+			$('#divC').prop("hidden", true);
+			$('#divD').prop("hidden", true);
+			$('#divE').prop("hidden", true);
+			$('#divF').prop("hidden", true);
+			$('#divG').prop("hidden", true);
+			$('#divH').prop("hidden", true);
+		}
+		else if(getParameterByName('estado')=='B'){
+			$('#divA').prop("hidden", true);
+			$('#divB').prop("hidden", false);
+			$('#divC').prop("hidden", true);
+			$('#divD').prop("hidden", true);
+			$('#divE').prop("hidden", true);
+			$('#divF').prop("hidden", true);
+			$('#divG').prop("hidden", true);
+			$('#divH').prop("hidden", true);
+		}
+		else if(getParameterByName('estado')=='C'){
+			$('#divA').prop("hidden", true);
+			$('#divB').prop("hidden", true);
+			$('#divC').prop("hidden", false);
+			$('#divD').prop("hidden", true);
+      $('#divE').prop("hidden", true);
+      $('#divF').prop("hidden", true);
+      $('#divG').prop("hidden", true);
+      $('#divH').prop("hidden", true);
+		}else if(getParameterByName('estado')=='D'){
+      $('#divA').prop("hidden", true);
+			$('#divB').prop("hidden", true);
+			$('#divC').prop("hidden", true);
+			$('#divD').prop("hidden", false);
+      $('#divE').prop("hidden", true);
+      $('#divF').prop("hidden", true);
+      $('#divG').prop("hidden", true);
+      $('#divH').prop("hidden", true);
+    }else if(getParameterByName('estado')=='E'){
+      $('#divA').prop("hidden", true);
+      $('#divB').prop("hidden", true);
+      $('#divC').prop("hidden", true);
+      $('#divD').prop("hidden", true);
+      $('#divE').prop("hidden", false);
+      $('#divF').prop("hidden", true);
+      $('#divG').prop("hidden", true);
+      $('#divH').prop("hidden", true);
+    }else if(getParameterByName('estado')=='F'){
+      $('#divA').prop("hidden", true);
+      $('#divB').prop("hidden", true);
+      $('#divC').prop("hidden", true);
+      $('#divD').prop("hidden", true);
+      $('#divE').prop("hidden", true);
+      $('#divF').prop("hidden", false);
+      $('#divG').prop("hidden", true);
+      $('#divH').prop("hidden", true);
+    }else if(getParameterByName('estado')=='G'){
+      $('#divA').prop("hidden", true);
+      $('#divB').prop("hidden", true);
+      $('#divC').prop("hidden", true);
+      $('#divD').prop("hidden", true);
+      $('#divE').prop("hidden", true);
+      $('#divF').prop("hidden", true);
+      $('#divG').prop("hidden", false);
+      $('#divH').prop("hidden", true);
+    }else if(getParameterByName('estado')=='H'){
+      $('#divA').prop("hidden", true);
+      $('#divB').prop("hidden", true);
+      $('#divC').prop("hidden", true);
+      $('#divD').prop("hidden", true);
+      $('#divE').prop("hidden", true);
+      $('#divF').prop("hidden", true);
+      $('#divG').prop("hidden", true);
+      $('#divH').prop("hidden", false);
+    }
+	});	
 </script>

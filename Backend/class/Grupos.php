@@ -53,17 +53,19 @@
             $equipos = array();
             $grupo = self::conectar_grupo($grupo);
 
-            for($i = 0; $i < count($grupo['data'][0]['teams']); $i++){
+            $a = $grupo['data'][0]['teams'];
 
-                $Pais = $grupo['data'][0]['teams'][$i]['name_en'];
-                $PJ = $grupo['data'][0]['teams'][$i]['mp'];
-                $PG = $grupo['data'][0]['teams'][$i]['w'];
-                $PE = $grupo['data'][0]['teams'][$i]['d'];
-                $PP = $grupo['data'][0]['teams'][$i]['l'];
-                $GF = $grupo['data'][0]['teams'][$i]['gf'];
-                $GC = $grupo['data'][0]['teams'][$i]['ga'];
-                $DG = $grupo['data'][0]['teams'][$i]['gd'];
-                $Pts = $grupo['data'][0]['teams'][$i]['pts'];
+            for($i = 0; $i < count($a); $i++){
+
+                $Pais = $a[$i]['name_en'];
+                $PJ = $a[$i]['mp'];
+                $PG = $a[$i]['w'];
+                $PE = $a[$i]['d'];
+                $PP = $a[$i]['l'];
+                $GF = $a[$i]['gf'];
+                $GC = $a[$i]['ga'];
+                $DG = $a[$i]['gd'];
+                $Pts = $a[$i]['pts'];
 
                 $equipo = array($Pais, $PJ, $PG, $PE, $PP, $GF, $GC, $DG, $Pts);
                 array_push($equipos, $equipo);
