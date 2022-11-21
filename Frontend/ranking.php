@@ -1,37 +1,3 @@
-<?php 
-	// require_once "../../clases/Conexion.php";
-	// $c= new conectar();
-	// $conexion=$c->conexion();
-	// $sql="SELECT art.nombre,
-	// 				mar.nombremarca,
-	// 				cat.nombreCategoria,
-	// 				art.descripcion,
-	// 				uni.nombreunidad,
-	// 				art.cantidad,
-	// 				art.stockmin,
-	// 				art.serie,
-	// 				ubi.nombreubicaciones,
-	// 				art.precio,
-	// 				img.ruta,						
-	// 				art.id_producto
-	// 	  from articulos as art
-	// 	  inner join marca as mar
-	// 	  on art.id_marca=mar.id_marca
-	// 	  inner join categorias as cat
-	// 	  on art.id_categoria=cat.id_categoria
-	// 	  inner join imagenes as img
-	// 	  on art.id_imagen=img.id_imagen
-	// 	  inner join ubicaciones as ubi
-	// 	  on art.id_ubicacion=ubi.id_ubicaciones
-	// 	  inner join unidad as uni
-	// 	  on art.id_unidad=uni.id_unidad
-	// 	  order by art.serie desc";
-		  
-	// $result=mysqli_query($conexion,$sql);
-
- ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +13,14 @@
   <!-- Estilo Personalizado -->
 	<link rel="stylesheet" type="text/css" href="../css/registro.css"/>  
 	<link rel="stylesheet" type="text/css" href="../css/estilos.css"/>  
-	<script src="librerias/jquery-3.2.1.min.js"></script>
-	<script src="js/funciones.js"></script>
+
+  <link rel="stylesheet" href="../librerias/css/alertify.min.css" />
+  <link rel="stylesheet" href="../librerias/css/themes/default.min.css" />
+  <script src="../librerias/alertify.min.js"></script>
+  <script src="../librerias/alertify.js"></script>
+	<script src="../librerias/jquery-3.2.1.min.js"></script>
+	<script src="../librerias/jquery-3.5.1.js"></script>
+	<script src="../js/validar.js"></script>
   <?php 
   require_once "menu.php"; 
   ?>
@@ -58,9 +30,8 @@
     <br>
     <h1>Ranking<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
     <br>
-
     <div class="table-responsive">
-      <table id="tablaArticuloDataTable" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
+      <table id="tableRanking" class="table table-light table-striped table-bordered " style="text-align: center; color:#000;">
         <thead class="table-dark">
           <tr>
             <td>Posicion</td>
@@ -74,33 +45,9 @@
           </tr>
         </thead>
         <tbody>
-          <?php 
-            // while($ver=mysqli_fetch_row($result)): 
-          ?>
-          <tr>
-            <td>1</td>
-            <td><?php echo "Jug1"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><?php echo "Jug2"; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-            <td><?php echo 0; ?></td>
-          </tr>
         </tbody>
       </table>
     </div>
-
     <br>
     <script src="../js/index.js"></script>
   </div>
@@ -111,11 +58,28 @@
 </html>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-      $('#tablaArticuloDataTable').DataTable({
-      language : {
-        url: "../librerias/datatable/es.json"
+  $(document).ready(function(){
+    console.log("Entra");
+    $.ajax({
+      type:"POST",
+      url:"../Backend/enviar_ranking.php",
+      success:function(r){
+        console.log(typeof(r))
+        console.log(r)
+        dato=jQuery.parseJSON(r);
+        for(let i=0; i<dato.length; i++){
+          $(`#tableRanking>tbody`).append(`<tr id="${i}" class="child" style="background-color: #454c52;">
+          <td>${i+1}</td>
+          <td>${dato[i][0]}</td>
+          <td>${dato[i][1]}</td>
+          <td>${dato[i][2]}</td>
+          <td>${dato[i][3]}</td>
+          <td>${dato[i][4]}</td>
+          <td>${dato[i][5]}</td>
+          <td>${dato[i][6]}</td>
+          </tr>`);
+        }
       }
-    });
-    } );
+    });    
+  });
 </script>
