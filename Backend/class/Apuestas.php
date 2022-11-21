@@ -167,6 +167,30 @@
             return array($ganador,$diferencia_goles);
         }
 
+        function getApuestas(){
+            $info_apuesta = array();
+            // $historial = array();
+            $idUsuario = $_SESSION['iduser'];
+            include('db.php');
+            $query0 = $query = "SELECT id_apuesta, id_partido, goles_local, goles_visitante  FROM apuestas WHERE id_user = '$idUsuario'";
+            $result0 = mysqli_query($conn, $query0);
+            $nro_apuestas = mysqli_num_rows($result0);
+            $partido = new partidos();
+            if(mysqli_num_rows($result0) > 0){
+                for($i=0;$i<$nro_users;$i++){
+                    $fila = mysqli_fetch_row($result0);
+                    $data_partido = $partido->conectar_partido($fila[1]);
+
+                    array_push($info_apuesta, array($fila[0], $data_partido['data'][0]["home_team_en"], $data_partido['data'][0]["away_team_en"], $fila[2], $fila[3]));
+                }
+                return $info_apuesta;
+                
+            }else{
+                return 0;
+                // array_push($info_apuesta, array($fila[0], $fila[1], $fila[2], $fila[3]));
+            }
+        }
+
 
     }    
     

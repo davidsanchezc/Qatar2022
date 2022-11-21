@@ -17,7 +17,7 @@
     $horas_minutos = explode(':', $fecha_hora_actual[1]);
     $horas = intval($horas_minutos[0]);
     $minutos = intval($horas_minutos[1]);
-
+    // 
     $id_jornada = 0;
     
     if($mes == 11){
