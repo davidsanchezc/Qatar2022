@@ -20,7 +20,7 @@
             $res = curl_exec($ch);
 
             curl_close($ch);
-    
+            
             return $res;
         }
 
@@ -38,7 +38,7 @@
 
 
             $res = curl_exec($ch);
-
+            
             curl_close($ch);
             
             $datos_partido = json_decode($res, true);

@@ -52,7 +52,7 @@
         function tabla_grupo($id_grupo){
             $equipos = array();
             $grupo = self::conectar_grupo($id_grupo);
-            echo 'siu';
+            // echo 'siu';
             $a = $grupo['data'][0]['teams'];
 
             for($i = 0; $i < count($a); $i++){
@@ -70,7 +70,18 @@
                 $equipo = array($Pais, $PJ, $PG, $PE, $PP, $GF, $GC, $DG, $Pts);
                 array_push($equipos, $equipo);
             }
-            echo 'siu';
+            // echo 'siu';
+
+            for($i = 1; $i < 4; $i++){
+                for($j = 0; $j < 4-$i; $j++){
+                    if($equipos[$j][8]<$equipos[$j+1][8]){
+                        $aux = $equipos[$j];
+                        $equipos[$j] = $equipos[$j+1];
+                        $equipos[$j+1] = $aux; 
+                    }
+                }
+                
+            }
 
             return $equipos;
         }
