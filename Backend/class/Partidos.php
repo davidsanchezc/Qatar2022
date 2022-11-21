@@ -147,8 +147,8 @@
         // }
     }
     // $data = json_decode(file_get_contents('https://api.mercadolibre.com/users/226384143/'));
-    $object = new partidos();
-    $res = $object->conectar_partidos_jornada(11);
+    // $object = new partidos();
+    // $res = $object->conectar_partidos_jornada(11);
     // $fecha_hora = explode(' ', $res['data'][0]['local_date']);
     // echo $fecha = $fecha_hora[0];
     // echo '<br>';
@@ -158,7 +158,7 @@
     // echo  (intval($horas_minutos[1]));
     // date_default_timezone_set('America/Lima');
     // echo gettype(date('m/d/y H:i'));
-    echo json_encode($res);
+    // echo json_encode($res);
     //EC VS QT 11/20/2022 19:00
     //Sen VS PB  11/21/2022 19:00
     //ING VS IRAN 11/21/2022 16:00
