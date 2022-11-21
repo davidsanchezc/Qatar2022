@@ -22,7 +22,7 @@
             $response = curl_exec($ch);
             $result = json_decode($response, true);
             return $result['data']['token'];            
-
+            
         }
     }
     // $object = new conectar();

@@ -43,7 +43,7 @@
             
             $datos_partido = json_decode($res, true);
             return ($datos_partido);
-        
+
         }
 
         function conectar_partidos_jornada($id_jornada){
@@ -73,7 +73,7 @@
             // $p = new partidos();
             $partido = self::conectar_partido($id_partido);
             
-            $resultado = json_decode($partido, true);
+            $resultado =$partido;
             $data = $resultado['data'][0];
             $equipo_local = ($data)['home_team_en'];
             $equipo_visitante = ($data)['away_team_en'];
@@ -82,6 +82,53 @@
             
             $datos = array('id' => $id_partido, 'equipo_local' => $equipo_local,'equipo_visitante' => $equipo_visitante, 'goles_local'=> $goles_local, 'goles_visitante' => $goles_visitante);
             return $datos;
+        }
+        // id_partido, nombre de equipos, banderas, fecha_hora (d-m-a)24h 
+
+        function encuentros($id_jornada){
+            $encuentros_jornada = array();
+
+            $ids = self::get_id_partidos($id_jornada);
+            // $encuentro = self::conectar_partido();
+
+            for($i= 0; $i < count($ids); $i++){
+                $datos_encuentro = self::conectar_partido($ids[$i]);
+                // echo 'a';
+                $id_partido = $datos_encuentro['data'][0]['id'];
+                $equipo_local = $datos_encuentro['data'][0]['home_team_en'];
+                $equipo_visitante = $datos_encuentro['data'][0]['away_team_en'];
+                $bandera_local = $datos_encuentro['data'][0]['home_flag'];
+                $bandera_visitante = $datos_encuentro['data'][0]['away_flag'];
+
+                $fecha_hora_partido = explode(' ', $datos_encuentro['data'][0]['local_date']);
+                // $fecha_partido = $fecha_hora_partido[0];
+                // $hora = $fecha_hora[1];
+                $fecha_partido = explode('/', $fecha_hora_partido[0]);
+
+                $mes = $fecha_partido[0];
+                $dia = $fecha_partido[1];
+                $año = $fecha_partido[2];
+                
+                $new_fecha_partido = $dia.'/'.$mes.'/'.$año;
+
+
+                $horas_minutos = explode(':', $fecha_hora_partido[1]);
+                $horas_partido = $horas_minutos[0];
+                $minutos_partido = $horas_minutos[1];
+                $horas_partido = intval($horas_partido);
+                // $minutos_partido = intval($minutos_partido);
+                
+                $horas_partido = $horas_partido - 8;
+                $horas_partido = strval($horas_partido);
+                // 5:00
+                $new_horas_minuto = $horas_partido.':'.$minutos_partido;
+
+                $new_fecha_hora_partido = $new_fecha_partido.' '.$new_horas_minuto;
+                $encuentro_jornada = array($id_partido, $equipo_local, $equipo_visitante, $bandera_local, $bandera_visitante, $new_fecha_hora_partido);
+                
+                array_push($encuentros_jornada, $encuentro_jornada);
+            }
+            return $encuentros_jornada;
         }
 
         function get_id_partidos($id_jornada){
@@ -101,17 +148,17 @@
     }
     // $data = json_decode(file_get_contents('https://api.mercadolibre.com/users/226384143/'));
     $object = new partidos();
-    $res = $object->conectar_partido(3);
-    $fecha_hora = explode(' ', $res['data'][0]['local_date']);
-    echo $fecha = $fecha_hora[0];
-    echo '<br>';
-    // echo gettype($fecha_hora[1]);
-    $horas_minutos = explode(':', $fecha_hora[1]);
-    echo intval($horas_minutos[0]);
-    echo  (intval($horas_minutos[1]));
-    date_default_timezone_set('America/Lima');
-    echo gettype(date('m/d/y H:i'));
-    
+    $res = $object->encuentros(3);
+    // $fecha_hora = explode(' ', $res['data'][0]['local_date']);
+    // echo $fecha = $fecha_hora[0];
+    // echo '<br>';
+    // // echo gettype($fecha_hora[1]);
+    // $horas_minutos = explode(':', $fecha_hora[1]);
+    // echo intval($horas_minutos[0]);
+    // echo  (intval($horas_minutos[1]));
+    // date_default_timezone_set('America/Lima');
+    // echo gettype(date('m/d/y H:i'));
+    echo json_encode($res);
     //EC VS QT 11/20/2022 19:00
     //Sen VS PB  11/21/2022 19:00
     //ING VS IRAN 11/21/2022 16:00
