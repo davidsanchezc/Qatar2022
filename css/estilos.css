@@ -16,6 +16,8 @@ h2{
 .btn-pais{
   /* border-color: #931f47; */
   border-color: #ffffffba;
+  max-width: 30% !important;
+  overflow-x: auto;
 }
 
 .btn-pais:hover{

@@ -146,7 +146,7 @@
           </div>
           <div id="resultado${i+1}" class="col m-1 empate">
             <form id="frmApuesta${i+1}" style="display:inline-flex">
-              <div class="row" style="flex-direction: column;">
+              <div class="row">
                 <div class="row">
                   <input id="golesLocal${i+1}" value='' class="form-control" placeholder="Goles Local" required>
                 </div>
