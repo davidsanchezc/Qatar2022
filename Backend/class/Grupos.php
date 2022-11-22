@@ -1,6 +1,6 @@
 <?php
     // require_once "./ConexionAPI.php";
-    require_once($_SERVER['DOCUMENT_ROOT']."/Qatar2022/Backend/class/ConexionAPI.php");
+    require_once "./class/ConexionAPI.php";
     
     class grupos{
 

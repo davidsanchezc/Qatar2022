@@ -17,7 +17,7 @@
             $nombres = $fila_nombres_apellidos[0];
             $apellidos = $fila_nombres_apellidos[1];
             if(mysqli_num_rows($result) > 0){
-
+                // echo 'siuuu_no_ceros';
                 $fila_acierto = mysqli_fetch_row($result);
                 $ganador_Acertado = intval($fila_acierto[1]);
                 $diferencia_Acertada = intval($fila_acierto[2]);
@@ -35,6 +35,17 @@
 
                 return array($nombres, $apellidos, $nro_apuestas, $marcador_Acertado, $diferencia_Acertada, $ganador_Acertado, $Pts);
             }else{
+                // echo 'siuuu_SI_ceros';
+                // $fila_acierto = mysqli_fetch_row($result);
+                // $ganador_Acertado = intval($fila_acierto[1]);
+                // $diferencia_Acertada = intval($fila_acierto[2]);
+                // $marcador_Acertado = intval($fila_acierto[3]);
+
+                // $fila_acierto = mysqli_fetch_row($result);
+                // $ganador_Acertado = intval($fila_acierto[1]);
+                // $diferencia_Acertada = intval($fila_acierto[2]);
+                // $marcador_Acertado = intval($fila_acierto[3]);
+
                 $ganador_Acertado = 0;
                 $diferencia_Acertada = 0;
                 $marcador_Acertado = 0;

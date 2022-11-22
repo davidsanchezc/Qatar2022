@@ -14,16 +14,18 @@
           <li class="nav-item">
             <a class="nav-link" href="./grupos.php">Tabla Grupos</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="./partidos.php">Partidos</a>
-          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="./historial.php">Historial Apuestas</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="./ranking.php">Ranking Jugadores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../">Cerrar Sesion</a>
+            <a class="nav-link" href="../Backend/destruir_sesion.php">Cerrar Sesion</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
+  <script></script>

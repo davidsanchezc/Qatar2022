@@ -12,8 +12,13 @@
 	<link rel="icon" type="image/ico" href="img/logo_qatar.ico"/>
   <!-- Estilo Personalizado -->
 	<link rel="stylesheet" type="text/css" href="css/iniciarSesion.css"/>
+	<link rel="stylesheet" href="librerias/css/alertify.min.css" />
+  <link rel="stylesheet" href="librerias/css/themes/default.min.css" />
+  <script src="librerias/alertify.min.js"></script>
+  <script src="librerias/alertify.js"></script>
 	<script src="librerias/jquery-3.2.1.min.js"></script>
-	<script src="js/funciones.js"></script>
+	<script src="librerias/jquery-3.5.1.js"></script>
+	<script src="js/validar.js"></script>  
 </head>
 <body>
   <div class="contenedor">
@@ -44,25 +49,57 @@
 
 		vacios=validarFormVacio('frmLogin');
 
-			if(vacios > 0){
-				alert("Debes llenar todos los campos!!");
-				return false;
-			}
+		if(vacios > 0){
+			alert("Debes llenar todos los campos!!");
+			return false;
+		}
 
 		datos=$('#frmLogin').serialize();
 		$.ajax({
 			type:"POST",
 			data:datos,
-			url:"procesos/regLogin/login.php",
+			url:"./Backend/sign_in.php",
 			success:function(r){
 				if(r==1){
-					window.location="vistas/inicio.php";
+					window.location="Frontend/apostar.php";
 				}else{
 					alert("No se pudo acceder :c");
-					// alert(r);
 				}
 			}
 		});
 	});
 });
+</script>
+
+
+<script type="text/javascript">
+	function Enter(){
+		tecla_enter = event.keyCode;
+    
+    	if(tecla_enter == 13){
+            vacios=validarFormVacio('frmLogin');
+
+			if(vacios > 0){
+				alert("Debes llenar todos los campos!!");
+				return false;
+			}
+
+			datos=$('#frmLogin').serialize();
+			$.ajax({
+				type:"POST",
+				data:datos,
+				url:"./Backend/sign_in.php",
+				success:function(r){
+					if(r==1){
+					window.location="Frontend/apostar.php";
+					}else{
+						alert("No se pudo acceder");
+					}
+				}
+			});
+    	}
+	}
+
+	window.onkeydown = Enter;
+
 </script>

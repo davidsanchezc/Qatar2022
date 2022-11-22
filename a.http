@@ -1,9 +1,0 @@
-POST /api/v1/user/login HTTP/1.1
-Host: api.cup2022.ir
-Content-Type: application/json
-Content-Length: 81
-
-{
-"email": "davidademirsanchezcotrado@gmail.com",
-"password": "aurorabel123"
-}

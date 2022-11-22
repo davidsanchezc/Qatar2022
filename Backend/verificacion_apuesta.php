@@ -20,14 +20,18 @@
     // 
     $id_jornada = 0;
     
-    if($mes == 11){
-        $id_jornada = $dia - 19;
-    }else if($mes == 12){
-        $id_jornada = $dia +11;
-    }
+    // if($mes == 11){
+    //     $id_jornada = $dia - 19;
+    // }else if($mes == 12){
+    //     $id_jornada = $dia +11;
+    // }
     // echo $minutos;
     // echo 'f';
-    if($horas = 19 && $minutos>=0 && $minutos<=5){
+    // if($horas == 17){
+    //     echo 'noo';
+    // }
+    // echo $horas;
+    if($horas >= 17 && $minutos>=0 && $minutos<=59){
         if($mes == 11){
             $id_jornada = $dia - 19;
         }else if($mes == 12){
@@ -57,17 +61,22 @@
             }
             
         }
+
         $object1 = new partidos();
         $object2 = new Apuestas();
 
         // $partidos = new partidos();
 
         $ids = $object1->get_id_partidos($id_jornada);
-        // echo 'siu';
+        // print 'siu';
+        // echo 'jornada'.$id_jornada;
         for($i=0;$i<count($ids);$i++){
-            echo $object2 -> verificar_apuesta($ids[$i]);
+            // echo 'id: '.$ids[$i];
+
+            $run =  $object2 -> verificar_apuesta($ids[$i]);
             // echo '+';
         }
+        echo 1;
     }else{
         echo 0;
     }

@@ -1,3 +1,13 @@
+<?php
+	session_start();
+  if(isset($_SESSION['usuario'])){
+    // require_once "../Backend/db.php";
+    // $id = $_SESSION['iduser'];
+    // $sql = "SELECT goles_local, goles_visitante from apuestas where id_user='$id'";
+    // $resultado = mysqli_query($conn, $sql);
+    // $id_partido = mysqli_fetch_row($resultado);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,9 +50,9 @@
     <h1 hidden id="jornada8">Jornada 8<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
     <h1 hidden id="jornada9">Jornada 9<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
     <h1 hidden id="jornada10">Jornada 10<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
-    <h1 hidden id="jornada11">Jornada 10<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
-    <h1 hidden id="jornada12">Jornada 10<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
-    <h1 hidden id="jornada13">Jornada 10<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
+    <h1 hidden id="jornada11">Jornada 11<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
+    <h1 hidden id="jornada12">Jornada 12<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
+    <h1 hidden id="jornada13">Jornada 13<img class="logoQatar" style="width:50px" src="../img/logo.webp"/></h1>
 
     <!-- <h2>Grupo A</h2> -->
 
@@ -60,8 +70,8 @@
     </div>
 
     <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link" href="?jornada=1">1</a></li>
+      <ul id="piePagina" class="pagination justify-content-center">
+        <!-- <li class="page-item"><a class="page-link" href="?jornada=1">1</a></li>
         <li class="page-item"><a class="page-link" href="?jornada=2">2</a></li>
         <li class="page-item"><a class="page-link" href="?jornada=3">3</a></li>
         <li class="page-item"><a class="page-link" href="?jornada=4">4</a></li>
@@ -73,7 +83,7 @@
         <li class="page-item"><a class="page-link" href="?jornada=10">10</a></li>
         <li class="page-item"><a class="page-link" href="?jornada=11">11</a></li>
         <li class="page-item"><a class="page-link" href="?jornada=12">12</a></li>
-        <li class="page-item"><a class="page-link" href="?jornada=13">13</a></li>
+        <li class="page-item"><a class="page-link" href="?jornada=13">13</a></li> -->
       </ul>
     </nav>
 
@@ -96,253 +106,291 @@
 
   $(document).ready(function(){
     jornada = getParameterByName('jornada');
-    if(jornada){
-      $.ajax({
-        type:"POST",
-        data:'id_jornada=' + jornada,
-        url:"../Backend/enviar_partidos_jornada.php",
-        success:function(r){
-          console.log(r)
-          dato=jQuery.parseJSON(r);
-          console.log(dato);
-          for(let i=0; i<dato.length; i++){
-            $(`#col-local${i+1}`).append(`<div id="divLocal${i+1}" class="btn btn-pais col m-1 local">
-              <h2 id="local${i+1}" style="text-align: -webkit-center;">
-              <img class="banderalocal" style="display:block; max-height: 50px;" src="${dato[i][3]}"/>${dato[i][1]}</h2>
-            </div>
-            <div id="resultado${i+1}" class="col m-1 empate">
-              <form id="frmApuesta${i+1}" style="display:inline-flex">
-                <div class="row" style="flex-direction: column;">
-                  <div class="row">
-                    <input id="golesLocal${i+1}" type="text" class="form-control" placeholder="Goles Local">
-                  </div>
-                  <h2>
-                    -
-                  </h2>
-                  <div class="row">
-                    <input id="golesVisita${i+1}" type="text" class="form-control" placeholder="Goles Visita">
-                  </div>
-                </div>
-              </form>
-            </div>  
-            <div id="divVisita1" class="btn btn-pais col m-1 visita">
-              <h2 id="visita${i+1}" style="text-align: -webkit-center;">
-              <img class="banderavisita" style="display:block; max-height: 50px;" src="${dato[i][4]}"/>${dato[i][2]}</h2>
-            </div>  
-            <div class="btn btn-success mt-3" onclick="apostarPartido(${dato[i][0]},${i+1})">Apostar</div>
-            `);
-          }
+    
+    id_jornada = 0;
+    
+    hoy = new Date();
+    dia = hoy.getDate();
+    mes = hoy.getMonth() +1;
+    // console.log("dia "+ dia)
+    // console.log("mes "+ mes)
+    if(mes == 11){
+      id_jornada = dia - 19;
+    }else if(mes == 12){
+      if(dia<7){
+          id_jornada = dia + 11;
+      }
+    }
+    // console.log("id_jornada es "+id_jornada)
+
+    if(jornada == ""){
+      jornada = id_jornada;
+    }
+    
+    
+    $.ajax({
+      type:"POST",
+      data:'id_jornada=' + jornada,
+      url:"../Backend/enviar_partidos_jornada.php",
+      success:function(r){
+        dato=jQuery.parseJSON(r);
+
+        for(let j=id_jornada; j<14; j++){
+          $(`#piePagina`).append(`<li class="page-item"><a class="page-link" href="?jornada=${j}">${j}</a></li>`)
         }
-      });    
-      if(jornada=='1'){
-        $('#jornada1').prop("hidden", false);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
+
+        for(let i=0; i<dato.length; i++){
+          $(`#col-local${i+1}`).append(`<div id="divLocal${i+1}" class="btn btn-pais col m-1 local">
+            <h2 id="local${i+1}" style="text-align: -webkit-center;">
+            <img class="banderalocal" style="display:block; max-height: 50px;" src="${dato[i][3]}"/>${dato[i][1]}</h2>
+          </div>
+          <div id="resultado${i+1}" class="col m-1 empate">
+            <form id="frmApuesta${i+1}" style="display:inline-flex">
+              <div class="row" style="flex-direction: column;">
+                <div class="row">
+                  <input id="golesLocal${i+1}" value='' class="form-control" placeholder="Goles Local" required>
+                </div>
+                <h2>
+                  -
+                </h2>
+                <div class="row">
+                  <input id="golesVisita${i+1}" value='' class="form-control" placeholder="Goles Visita" required>
+                </div>
+              </div>
+            </form>
+          </div>  
+          <div id="divVisita1" class="btn btn-pais col m-1 visita">
+            <h2 id="visita${i+1}" style="text-align: -webkit-center;">
+            <img class="banderavisita" style="display:block; max-height: 50px;" src="${dato[i][4]}"/>${dato[i][2]}</h2>
+          </div>
+          `);
+          $(`#col-local${i+1}`).append(`<div class="btn btn-success mt-3" onclick="apostarPartido(${dato[i][0]},${i+1})">Apostar</div>`)
+        }
       }
-      else if(jornada=='2'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", false);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='3'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", false);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='4'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", false);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='5'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", false);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='6'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", false);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='7'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", false);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='8'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", false);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='9'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", false);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='10'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", false);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='11'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", false);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='12'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", false);
-        $('#jornada13').prop("hidden", true);
-      }
-      else if(jornada=='13'){
-        $('#jornada1').prop("hidden", true);
-        $('#jornada2').prop("hidden", true);
-        $('#jornada3').prop("hidden", true);
-        $('#jornada4').prop("hidden", true);
-        $('#jornada5').prop("hidden", true);
-        $('#jornada6').prop("hidden", true);
-        $('#jornada7').prop("hidden", true);
-        $('#jornada8').prop("hidden", true);
-        $('#jornada9').prop("hidden", true);
-        $('#jornada10').prop("hidden", true);
-        $('#jornada11').prop("hidden", true);
-        $('#jornada12').prop("hidden", true);
-        $('#jornada13').prop("hidden", false);
-      }
+    });    
+
+    // for(let k=1; k<=14; k++){
+    //   $(`#jornada${k}`).prop("hidden",true);
+    // }
+    // if(jornada)
+
+    if(jornada=='1' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", false);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='2' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", false);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='3' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", false);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='4' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", false);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='5' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", false);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='6' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", false);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='7' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", false);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='8' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", false);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='9' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", false);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='10' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", false);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='11' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", false);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='12' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", false);
+      $('#jornada13').prop("hidden", true);
+    }
+    else if(jornada=='13' && parseInt(jornada)>=id_jornada){
+      $('#jornada1').prop("hidden", true);
+      $('#jornada2').prop("hidden", true);
+      $('#jornada3').prop("hidden", true);
+      $('#jornada4').prop("hidden", true);
+      $('#jornada5').prop("hidden", true);
+      $('#jornada6').prop("hidden", true);
+      $('#jornada7').prop("hidden", true);
+      $('#jornada8').prop("hidden", true);
+      $('#jornada9').prop("hidden", true);
+      $('#jornada10').prop("hidden", true);
+      $('#jornada11').prop("hidden", true);
+      $('#jornada12').prop("hidden", true);
+      $('#jornada13').prop("hidden", false);
     }
 	});
 </script>
 
 <script>
   function apostarPartido(id_partido, id){
-    console.log("Entro aqui")
+
     nro = id.toString();  
-    // $_POST['id_partido'], $_POST['goles_local'], $_POST['goles_visitante']
-    goles_local = parseInt($(`#golesLocal${nro}`).val())
-    goles_visitante = parseInt($(`#golesVisita${nro}`).val())
+
+    text_local = $(`#golesLocal${nro}`).val()
+    text_visitante = $(`#golesVisita${nro}`).val()
+
+    console.log("hola " + text_local + text_visitante)
+    if(text_local=="" || text_visitante==""){
+      alertify.error("Valores faltantes!");
+      return false;
+    }
+    goles_local = parseInt(text_local)
+    goles_visitante = parseInt(text_visitante)
     
     if(goles_local < 0 || goles_visitante < 0){
-      alertify.alert("Valores faltantes o incorrectos!").set({title:"ERROR"});
+      // alertify.alert("Valores incorrectos!").set({title:"ERROR"});
+      alertify.error("Valores incorrectos!");
       return false;
     }
 
@@ -358,11 +406,21 @@
       success:function(r){
         console.log(r)
         if(r==1){
-					alertify.success("Apuesta Realizada :D");
-				}else{
+					alertify.success("Apuesta Realizada");
+				}else if(r==-1){
+          alertify.error("El partido ya ha sido apostado");
+        }else if(r==0){
+          alertify.error("El partido ya no está disponible para apostar");
+        }else{
 					alertify.error("No se pudo realizar la apuesta");
         }
       }
     });    
   }
 </script>
+
+<?php
+	}else{
+    header("location:../index.php");
+  }
+?>

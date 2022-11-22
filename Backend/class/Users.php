@@ -4,9 +4,17 @@
         
         public function sign_up($datos){
             include('db.php');
-            $query = "INSERT INTO usuarios(nombres, apellidos, user, password) VALUES ('$datos[0]', '$datos[1]', '$datos[2]', '$datos[3]')";
-            echo 'siu';
-            return mysqli_query($conn, $query);
+            $query_verificar = "SELECT * FROM usuarios WHERE user = '$datos[2]'";
+            $resultado = mysqli_query($conn, $query_verificar);
+
+            if(mysqli_num_rows($resultado) == 0){
+                $query = "INSERT INTO usuarios(nombres, apellidos, user, password) VALUES ('$datos[0]', '$datos[1]', '$datos[2]', '$datos[3]')";
+                // echo 'siu';
+                return mysqli_query($conn, $query);
+            }else{
+                return 0;
+            }
+            
             
         }
 
